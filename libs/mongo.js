@@ -16,6 +16,7 @@ db.once('open', function callback() {
     log.info("Connected to DB!");
 });
 
+// Auth models
 var UserModel = mongoose.model('User', User),
     ClientModel = mongoose.model('Client', Client),
     AccessTokenModel = mongoose.model('AccessToken', AccessToken);
