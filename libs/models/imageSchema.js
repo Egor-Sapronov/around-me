@@ -4,8 +4,11 @@ var Image = new Schema({
     geoLoc: [],
     description: String,
     uploaded: Date,
-    userLiked: [
+    usersLiked: [
         {type: Schema.ObjectId, ref: 'UserModel'}
+    ],
+    comments: [
+        {type: Schema.ObjectId, ref: 'CommentModel'}
     ],
     user: {type: Schema.ObjectId, ref: 'UserModel'},
     image: Buffer
@@ -13,7 +16,7 @@ var Image = new Schema({
 
 Image.virtual('likes')
     .get(function () {
-        this.populate('userLiked')
+        this.populate('usersLiked')
             .exec(function (err, image) {
                 return image.likes.length;
             });
