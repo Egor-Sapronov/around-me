@@ -5,10 +5,12 @@ describe('Register spec', function () {
 
         register('Egor2', '123456', function (err, user) {
             if (err) {
-                assert.notEqual(err, undefined);
+                assert.notEqual(err, null);
+                assert.equal(user, null);
                 done();
             } else {
-                assert.equal(user.name, 'Egor2');
+                assert.equal(user.username, 'Egor2');
+                assert.equal(err, null);
                 done();
             }
         });

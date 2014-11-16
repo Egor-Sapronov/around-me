@@ -45,11 +45,11 @@ function register(username, password, callback) {
 
     user.save(function (err, user) {
         if (err) {
-            callback(err);
+            callback(err,null);
             return log.error(err);
         }
         else {
-            callback(user);
+            callback(null,user);
             log.info("New user - %s:%s", user.username, user.password);
         }
     });
