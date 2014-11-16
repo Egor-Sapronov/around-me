@@ -40,6 +40,12 @@ server.exchange(oauth2orize.exchange.password(function (client, username, passwo
     });
 }));
 
+function logOff(username, done) {
+
+}
+
+exports.logOff = logOff;
+
 function register(username, password, done) {
     var user = new UserModel({username: username, password: password});
 
