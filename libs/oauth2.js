@@ -1,7 +1,6 @@
 var oauth2orize = require('oauth2orize');
 var passport = require('passport');
 var crypto = require('crypto');
-var config = require('./config');
 var UserModel = require('./mongo').UserModel;
 var ClientModel = require('./mongo').ClientModel;
 var AccessTokenModel = require('./mongo').AccessTokenModel;
