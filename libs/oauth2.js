@@ -40,16 +40,16 @@ server.exchange(oauth2orize.exchange.password(function (client, username, passwo
     });
 }));
 
-function register(username, password, callback) {
+function register(username, password, done) {
     var user = new UserModel({username: username, password: password});
 
     user.save(function (err, user) {
         if (err) {
-            callback(err,null);
+            done(err, null);
             return log.error(err);
         }
         else {
-            callback(null,user);
+            done(null, user);
             log.info("New user - %s:%s", user.username, user.password);
         }
     });
