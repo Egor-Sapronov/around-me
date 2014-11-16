@@ -40,18 +40,22 @@ server.exchange(oauth2orize.exchange.password(function (client, username, passwo
     });
 }));
 
-function register(username, password) {
+function register(username, password, callback) {
     var user = new UserModel({username: username, password: password});
 
     user.save(function (err, user) {
         if (err) {
+            callback(err);
             return log.error(err);
         }
         else {
+            callback(user);
             log.info("New user - %s:%s", user.username, user.password);
         }
     });
 }
+
+exports.register = register;
 
 
 // token endpoint
