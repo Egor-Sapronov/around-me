@@ -1,36 +1,40 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var express = require('express'),
+    path = require('path'),
+    logger = require('morgan'),
+    cookieParser = require('cookie-parser'),
+    bodyParser = require('body-parser'),
+    oauth2 = require('./libs/oauth2'),
+    passport = require('passport'),
+    app = express();
 
-var oauth2 = require('./libs/oauth2');
-var passport = require('passport');
 require('./libs/auth');
 
-var app = express();
-
-// view engine setup
+app.set('views', path.join(__dirname, 'client/build/templates'));
 app.set('view engine', 'jade');
-
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(passport.initialize());
+
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.post('/oauth/token', oauth2.token);
 
 app.get('/api/userInfo',
-    passport.authenticate('bearer', { session: false }),
+    passport.authenticate('bearer', {session: false}),
     function (req, res) {
-        // req.authInfo is set using the `info` argument supplied by
-        // `BearerStrategy`.  It is typically used to indicate scope of the token,
-        // and used in access control checks.  For illustrative purposes, this
-        // example simply returns the scope in the response.
-        res.json({ user_id: req.user.userId, name: req.user.username, scope: req.authInfo.scope })
+        res.json({user_id: req.user.userId, name: req.user.username, scope: req.authInfo.scope})
     }
 );
+
+app.get('/',
+    function (req, res) {
+        res.render('index');
+    });
+
+app.get('/login', function (req, res) {
+    res.render('login');
+});
 
 module.exports = app;
