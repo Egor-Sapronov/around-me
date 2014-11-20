@@ -7,7 +7,28 @@ html
         meta(name='description', content='')
         meta(name='viewport', content='width=device-width, initial-scale=1')
         link(rel='stylesheet', href='vendor/bootstrap/dist/css/bootstrap.css')
+        link(rel='stylesheet', href='assets/stylesheets/cover.css')
     body
-        h1 Index
+        .site-wrapper
+            .site-wrapper-inner
+                .cover-container
+                    .masthead.clearfix
+                        .inner
+                            h3.masthead-brand Cover
+                            nav
+                                ul.nav.masthead-nav
+                                    li.active
+                                        a(href='#') Home
+                                    li
+                                        a(href='#') Features
+                                    li
+                                        a(href='#') Contact
+                    .inner.cover
+                        h1.cover-heading Cover your page.
+
+                    .mastfoot
+                        .inner
+                            p arround me
         script(src='assets/scripts/init.js')
-        script(src='vendor/jquery/dist/jquery.js')
+        script(src='vendor/jquery/dist/jquery.min.js')
+        script(src='vendor/bootstrap/dist/js/bootstrap.min.js')
