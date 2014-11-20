@@ -1,12 +1,10 @@
 var mongoose = require('mongoose'),
     log = require('./log')(module),
-    config = require('./config');
-
-var User = require('./models/authSchema').User,
+    config = require('./config'),
+    User = require('./models/authSchema').User,
     Client = require('./models/authSchema').Client,
-    AccessToken = require('./models/authSchema').AccessToken;
-
-var Image = require('./models/imageSchema').Image,
+    AccessToken = require('./models/authSchema').AccessToken,
+    Image = require('./models/imageSchema').Image,
     Comment = require('./models/commentSchema').Comment;
 
 mongoose.connect(config.get('mongoose:uri'));

@@ -1,13 +1,11 @@
-var oauth2orize = require('oauth2orize');
-var passport = require('passport');
-var crypto = require('crypto');
-var UserModel = require('./mongo').UserModel;
-var ClientModel = require('./mongo').ClientModel;
-var AccessTokenModel = require('./mongo').AccessTokenModel;
-var log = require('./log')(module);
-
-// create OAuth 2.0 server
-var server = oauth2orize.createServer();
+var oauth2orize = require('oauth2orize'),
+    passport = require('passport'),
+    crypto = require('crypto'),
+    UserModel = require('./mongo').UserModel,
+    ClientModel = require('./mongo').ClientModel,
+    AccessTokenModel = require('./mongo').AccessTokenModel,
+    log = require('./log')(module),
+    server = oauth2orize.createServer();
 
 // Exchange username & password for access token.
 server.exchange(oauth2orize.exchange.password(function (client, username, password, scope, done) {
