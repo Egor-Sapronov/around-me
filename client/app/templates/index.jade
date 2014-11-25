@@ -45,15 +45,15 @@ html
                                 li
                                     a(href='#') One more separated link
 
-        .container
+        .container(ng-app='mainMap')
             .page-header
-                h1 Sticky footer with fixed navbar
-            div(id='map-canvas')
+
+            div(ng-controller='mapController')
+                ui-gmap-google-map(center='map.center', zoom='map.zoom')
         footer.footer
             .container
                 p.text-muted Place sticky footer content here.
 
         script(src='vendor/jquery/dist/jquery.min.js')
         script(src='vendor/bootstrap/dist/js/bootstrap.min.js')
-        script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDasQqDYAQVPfnB4VDTk490mf-Mz2hi-RY')
         script(src='assets/scripts/init.js')

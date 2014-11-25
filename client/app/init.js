@@ -1,29 +1,22 @@
-var angular = require('angular');
-require('./login/login.js');
-
 (function () {
-    angular.module('app', [])
-        .factory('TokenInterceptor', function ($window) {
-            return {
-                request: function (config) {
-                    if ($window.sessionStorage.token) {
-                        config.headers['Authorization'] = 'Bearer ' + $window.sessionStorage.Bearer;
-                    }
-                    return config;
-                }
-            };
+    var angular = require('angular');
+    require('angularGoogleMap');
+    angular.module('mainMap', ['uiGmapgoogle-maps'])
+        .config(function (uiGmapGoogleMapApiProvider) {
+            uiGmapGoogleMapApiProvider.configure({
+                key: 'AIzaSyDasQqDYAQVPfnB4VDTk490mf-Mz2hi-RY',
+                v: '3.17',
+                libraries: 'weather,geometry,visualization'
+            });
         })
-        .config(function ($httpProvider) {
-            $httpProvider.interceptors.push('TokenInterceptor');
-        });
-})();
+        .controller('mapController', mapController);
 
-function initialize() {
-    var mapOptions = {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8
-    };
-    var map = new google.maps.Map(document.getElementById('map-canvas'),
-        mapOptions);
-}
-google.maps.event.addDomListener(window, 'load', initialize);
+    mapController.$inject = ['$scope', 'uiGmapGoogleMapApi'];
+    function mapController($scope, uiGmapGoogleMapApi) {
+        $scope.map = {center: {latitude: 45, longitude: -73}, zoom: 8};
+
+        uiGmapGoogleMapApi.then(function (maps) {
+
+        });
+    }
+})();

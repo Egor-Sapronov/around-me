@@ -17,6 +17,17 @@ module.exports = function (paths) {
             depends: {
                 angular: 'angular'
             }
+        },
+        lodash: {
+            path: paths.vendor + 'lodash/dist/lodash.min.js',
+            exports: 'lodash'
+        },
+        angularGoogleMap: {
+            path: paths.vendor + 'angular-google-maps/dist/angular-google-maps.min.js',
+            exports: 'angularGoogleMap',
+            depends: {
+                lodash: 'lodash'
+            }
         }
     };
 };
