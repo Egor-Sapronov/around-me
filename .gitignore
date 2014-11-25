@@ -29,6 +29,4 @@ node_modules
 
 .idea
 
-client/build
-
 client/app/vendor

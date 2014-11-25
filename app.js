@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('/',
     function (req, res) {
-        res.render('index');
+        res.render('index.jade');
     });
 
 //app.get('/login', function (req, res) {

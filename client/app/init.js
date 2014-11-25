@@ -1,6 +1,7 @@
 (function () {
     var angular = require('angular');
     require('angularGoogleMap');
+
     angular.module('mainMap', ['uiGmapgoogle-maps'])
         .config(function (uiGmapGoogleMapApiProvider) {
             uiGmapGoogleMapApiProvider.configure({
