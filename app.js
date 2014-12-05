@@ -3,8 +3,6 @@ var express = require('express'),
     logger = require('morgan'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
-//oauth2 = require('./libs/oauth2'),
-//    passport = require('passport'),
     app = express();
 
 require('./libs/auth');
@@ -19,22 +17,9 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-//app.post('/oauth/token', oauth2.token);
-//
-//app.get('/api/userInfo',
-//    passport.authenticate('bearer', {session: false}),
-//    function (req, res) {
-//        res.json({user_id: req.user.userId, name: req.user.username, scope: req.authInfo.scope})
-//    }
-//);
-
 app.get('/',
     function (req, res) {
         res.render('index.jade');
     });
-
-//app.get('/login', function (req, res) {
-//    res.render('login');
-//});
 
 module.exports = app;
