@@ -4,7 +4,8 @@
   "private": true,
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "postinstall": "node node_modules/.bin/gulp build"
   },
   "engines": {
     "node": "0.10.x"
