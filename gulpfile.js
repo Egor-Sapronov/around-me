@@ -4,6 +4,7 @@ var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
     browserify = require('gulp-browserify'),
     uglify = require('gulp-uglify'),
+    useref = require('gulp-useref'),
     paths = {
         src: './client/src/',
         app: './client/src/app/',
@@ -15,6 +16,7 @@ var gulp = require('gulp'),
 
 gulp.task('html', function () {
     return gulp.src(paths.templates + '**/*.jade')
+        .pipe(jade({pretty: true}))
         .pipe(gulp.dest(paths.dest + 'assets/templates'));
 });
 
@@ -51,7 +53,13 @@ gulp.task('serve', function () {
 });
 
 gulp.task('refs', function () {
+    var assets = useref.assets();
 
+    return gulp.src(paths.dest + '**/*.jade')
+        .pipe(assets)
+        .pipe(assets.restore())
+        .pipe(useref()) // Run useref
+        .pipe(gulp.dest(paths.dest));
 });
 
 gulp.task('watch', function () {

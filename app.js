@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('/',
     function (req, res) {
-        res.render('index.jade');
+        res.sendFile(path.join(__dirname, 'client/build/assets/templates/index.html'));
     });
 
 module.exports = app;
