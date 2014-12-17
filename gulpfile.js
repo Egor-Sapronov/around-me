@@ -14,29 +14,29 @@ var gulp = require('gulp'),
     };
 
 gulp.task('html', function () {
-    gulp.src(paths.templates + '**/*.jade')
+    return gulp.src(paths.templates + '**/*.jade')
         .pipe(gulp.dest(paths.dest + 'assets/templates'));
 });
 
 gulp.task('vendor', function () {
-    gulp.src(paths.vendor + '**')
+    return gulp.src(paths.vendor + '**')
         .pipe(gulp.dest(paths.dest + 'vendor'));
 });
 
 gulp.task('scripts', function () {
-    gulp.src(paths.app + 'init.js')
+    return gulp.src(paths.app + 'init.js')
         .pipe(plumber())
         .pipe(browserify())
         .pipe(gulp.dest(paths.dest + 'assets/scripts'));
 });
 
 gulp.task('stylesheets', function () {
-    gulp.src(paths.stylesheets + '**')
+    return gulp.src(paths.stylesheets + '**')
         .pipe(gulp.dest(paths.dest + 'assets/stylesheets'));
 });
 
 gulp.task('clean', function () {
-    gulp.src(paths.dest, {read: false})
+    return gulp.src(paths.dest, {read: false})
         .pipe(clean());
 });
 
@@ -48,6 +48,10 @@ gulp.task('serve', function () {
     app.listen(config.get('port'), function () {
         log.info('Express server listening on port ' + config.get('port'));
     });
+});
+
+gulp.task('refs', function () {
+
 });
 
 gulp.task('watch', function () {
