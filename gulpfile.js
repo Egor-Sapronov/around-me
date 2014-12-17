@@ -5,11 +5,12 @@ var gulp = require('gulp'),
     browserify = require('gulp-browserify'),
     uglify = require('gulp-uglify'),
     paths = {
-        src: './client/app/',
+        src: './client/src/',
+        app: './client/src/app/',
         dest: './client/build/',
-        templates: './client/app/templates/',
-        stylesheets: './client/app/stylesheets/',
-        vendor: './client/app/vendor/'
+        templates: './client/src/assets/templates/',
+        stylesheets: './client/src/assets/stylesheets/',
+        vendor: './client/src/vendor/'
     };
 
 gulp.task('templates', function () {
@@ -23,9 +24,9 @@ gulp.task('vendor', function () {
 });
 
 gulp.task('scripts', function () {
-    gulp.src(paths.src + 'init.js')
+    gulp.src(paths.app + 'init.js')
         .pipe(plumber())
-        .pipe(browserify({shim: require('./browserify-shim')(paths)}))
+        .pipe(browserify())
         .pipe(gulp.dest(paths.dest + 'assets/scripts/'));
 });
 
@@ -52,9 +53,7 @@ gulp.task('serve', function () {
 gulp.task('watch', function () {
     gulp.watch(paths.templates + '**/*.jade', ['templates']);
 
-    gulp.watch(paths.vendor + '**', ['vendor']);
-
-    gulp.watch(paths.src + '**/*.js', ['scripts']);
+    gulp.watch(paths.app + '**/*.js', ['scripts']);
 
     gulp.watch(paths.stylesheets + '**', ['stylesheets']);
 });
