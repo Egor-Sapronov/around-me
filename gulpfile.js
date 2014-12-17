@@ -4,6 +4,10 @@ var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
     browserify = require('gulp-browserify'),
     uglify = require('gulp-uglify'),
+    gulpif = require('gulp-if'),
+    cssmin = require('gulp-cssmin'),
+    useref = require('gulp-useref'),
+    uncss = require('gulp-uncss'),
     paths = {
         src: './client/src/',
         app: './client/src/app/',
@@ -14,29 +18,30 @@ var gulp = require('gulp'),
     };
 
 gulp.task('html', function () {
-    gulp.src(paths.templates + '**/*.jade')
+    return gulp.src(paths.templates + '**/*.jade')
+        .pipe(jade({pretty: true}))
         .pipe(gulp.dest(paths.dest + 'assets/templates'));
 });
 
 gulp.task('vendor', function () {
-    gulp.src(paths.vendor + '**')
+    return gulp.src(paths.vendor + '**')
         .pipe(gulp.dest(paths.dest + 'vendor'));
 });
 
 gulp.task('scripts', function () {
-    gulp.src(paths.app + 'init.js')
+    return gulp.src(paths.app + 'init.js')
         .pipe(plumber())
         .pipe(browserify())
         .pipe(gulp.dest(paths.dest + 'assets/scripts'));
 });
 
 gulp.task('stylesheets', function () {
-    gulp.src(paths.stylesheets + '**')
+    return gulp.src(paths.stylesheets + '**')
         .pipe(gulp.dest(paths.dest + 'assets/stylesheets'));
 });
 
 gulp.task('clean', function () {
-    gulp.src(paths.dest, {read: false})
+    return gulp.src(paths.dest, {read: false})
         .pipe(clean());
 });
 
@@ -50,8 +55,23 @@ gulp.task('serve', function () {
     });
 });
 
+gulp.task('refs', function () {
+    var assets = useref.assets();
+
+    return gulp.src(paths.dest + 'assets/templates/index.html')
+        .pipe(assets)
+        .pipe(gulpif('*.css', uncss({
+            html: [paths.dest + 'assets/templates/index.html']
+        })))
+        .pipe(gulpif('*.css', cssmin()))
+        .pipe(gulpif('*.js', uglify()))
+        .pipe(assets.restore())
+        .pipe(useref())
+        .pipe(gulp.dest(paths.dest + 'assets/templates'));
+});
+
 gulp.task('watch', function () {
-    gulp.watch(paths.templates + '**/*.jade', ['templates']);
+    gulp.watch(paths.templates + '**/*.jade', ['html']);
 
     gulp.watch(paths.app + '**/*.js', ['scripts']);
 

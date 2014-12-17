@@ -3,6 +3,7 @@ var express = require('express'),
     logger = require('morgan'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
+    compression = require('compression'),
     app = express();
 
 app.set('views', path.join(__dirname, 'client/build/assets/templates'));
@@ -12,10 +13,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(compression({threshold: 512}));
 
 app.get('/',
     function (req, res) {
-        res.render('index.jade');
+        res.sendFile(path.join(__dirname, 'client/build/assets/templates/index.html'));
     });
 
 module.exports = app;
