@@ -5,7 +5,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     app = express();
 
-app.set('views', path.join(__dirname, 'client/build/templates'));
+app.set('views', path.join(__dirname, 'client/build/assets/templates'));
 app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(bodyParser.json());

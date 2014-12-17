@@ -13,9 +13,9 @@ var gulp = require('gulp'),
         vendor: './client/src/vendor/'
     };
 
-gulp.task('templates', function () {
+gulp.task('html', function () {
     gulp.src(paths.templates + '**/*.jade')
-        .pipe(gulp.dest(paths.dest + 'templates/'));
+        .pipe(gulp.dest(paths.dest + 'assets/templates'));
 });
 
 gulp.task('vendor', function () {
@@ -27,7 +27,7 @@ gulp.task('scripts', function () {
     gulp.src(paths.app + 'init.js')
         .pipe(plumber())
         .pipe(browserify())
-        .pipe(gulp.dest(paths.dest + 'assets/scripts/'));
+        .pipe(gulp.dest(paths.dest + 'assets/scripts'));
 });
 
 gulp.task('stylesheets', function () {
@@ -60,5 +60,5 @@ gulp.task('watch', function () {
 
 gulp.task('start', ['watch', 'serve']);
 
-gulp.task('build', ['templates', 'scripts', 'vendor', 'stylesheets']);
+gulp.task('build', ['html', 'scripts', 'vendor', 'stylesheets']);
 
