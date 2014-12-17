@@ -7,6 +7,7 @@ var gulp = require('gulp'),
     gulpif = require('gulp-if'),
     cssmin = require('gulp-cssmin'),
     useref = require('gulp-useref'),
+    uncss = require('gulp-uncss'),
     paths = {
         src: './client/src/',
         app: './client/src/app/',
@@ -59,8 +60,11 @@ gulp.task('refs', function () {
 
     return gulp.src(paths.dest + 'assets/templates/index.html')
         .pipe(assets)
-        .pipe(gulpif('*.js', uglify()))
+        .pipe(gulpif('*.css', uncss({
+            html: [paths.dest + 'assets/templates/index.html']
+        })))
         .pipe(gulpif('*.css', cssmin()))
+        .pipe(gulpif('*.js', uglify()))
         .pipe(assets.restore())
         .pipe(useref())
         .pipe(gulp.dest(paths.dest + 'assets/templates'));
