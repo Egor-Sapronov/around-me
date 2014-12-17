@@ -4,6 +4,8 @@ var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
     browserify = require('gulp-browserify'),
     uglify = require('gulp-uglify'),
+    gulpif = require('gulp-if'),
+    cssmin = require('gulp-cssmin'),
     useref = require('gulp-useref'),
     paths = {
         src: './client/src/',
@@ -57,9 +59,11 @@ gulp.task('refs', function () {
 
     return gulp.src(paths.dest + 'assets/templates/index.html')
         .pipe(assets)
+        .pipe(gulpif('*.js', uglify()))
+        .pipe(gulpif('*.css', cssmin()))
         .pipe(assets.restore())
         .pipe(useref())
-        .pipe(gulp.dest(paths.dest+'assets/templates'));
+        .pipe(gulp.dest(paths.dest + 'assets/templates'));
 });
 
 gulp.task('watch', function () {
