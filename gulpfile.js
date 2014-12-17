@@ -55,15 +55,15 @@ gulp.task('serve', function () {
 gulp.task('refs', function () {
     var assets = useref.assets();
 
-    return gulp.src(paths.dest + '**/*.jade')
+    return gulp.src(paths.dest + 'assets/templates/index.html')
         .pipe(assets)
         .pipe(assets.restore())
-        .pipe(useref()) // Run useref
-        .pipe(gulp.dest(paths.dest));
+        .pipe(useref())
+        .pipe(gulp.dest(paths.dest+'assets/templates'));
 });
 
 gulp.task('watch', function () {
-    gulp.watch(paths.templates + '**/*.jade', ['templates']);
+    gulp.watch(paths.templates + '**/*.jade', ['html']);
 
     gulp.watch(paths.app + '**/*.js', ['scripts']);
 
