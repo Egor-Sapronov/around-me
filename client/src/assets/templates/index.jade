@@ -30,27 +30,8 @@ html
                             a(href='#about') About
                         li
                             a(href='#contact') Contact
-                        li.dropdown
-                            a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
-                                | Dropdown
-                                span.caret
-                            ul.dropdown-menu(role='menu')
-                                li
-                                    a(href='#') Action
-                                li
-                                    a(href='#') Another action
-                                li
-                                    a(href='#') Something else here
-                                li.divider
-                                li.dropdown-header Nav header
-                                li
-                                    a(href='#') Separated link
-                                li
-                                    a(href='#') One more separated link
 
         .container(ng-app='mainMap')
-            .page-header
-
             div(ng-controller='mapController')
                 ui-gmap-google-map(center='map.center', zoom='map.zoom')
         footer.footer
