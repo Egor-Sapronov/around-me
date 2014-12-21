@@ -3,11 +3,20 @@ nav.light-blue.lighten-1
         .nav-wrapper
             a.brand-logo(id="logo-container", href='#') Arround me
             ul.right.side-nav(id='nav-mobile')
-                li.waves-effect.waves-light
+                li.waves-effect.waves-light.hide-on-med-and-down
                     a(href='#') Map
-                li.waves-effect.waves-light
+                li.waves-effect.waves-light.hide-on-med-and-down
                     a(href='#') Upload
-                li.waves-effect.waves-light
+                li.waves-effect.waves-light.hide-on-med-and-down
                     a(href='#') Account
+                li.waves-effect.waves-light.hide-on-large-only
+                    a.btn-flat(href='#')
+                        i.mdi-maps-place
+                li.waves-effect.waves-light.hide-on-large-only
+                    a.btn-flat(href='#')
+                        i.mdi-file-file-upload
+                li.waves-effect.waves-light.hide-on-large-only
+                    a.btn-flat(href='#')
+                        i.mdi-social-person
             a.button-collapse(data-activates='nav-mobile', href='#')
                 i.mdi-navigation-menu
