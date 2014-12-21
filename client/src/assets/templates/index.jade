@@ -9,16 +9,17 @@ html
         <!-- build:css ../../assets/stylesheets/combined.css-->
         link(rel='stylesheet',href='../../vendor/materialize/dist/css/materialize.css')
         link(rel='stylesheet', href='../../assets/stylesheets/map.css')
-        link(rel='stylesheet', href='../../assets/stylesheets/sticky-footer-navbar.css')
         div
         <!-- endbuild -->
     body
         include ./partials/navbar.jade
 
-        .section.no-pad-bot.col.s12(id='index-banner', ng-app='mainMap', ng-controller='mapController')
-            ui-gmap-google-map(center='map.center', zoom='map.zoom')
+        section
+            .row
+                .col.l12.s11(id='index-banner', ng-app='mainMap', ng-controller='mapController')
+                    ui-gmap-google-map(center='map.center', zoom='map.zoom')
 
-        .section
+        section
             .container
                 .row
                     .col.s12.m4
