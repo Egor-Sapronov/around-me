@@ -2,6 +2,7 @@ var gulp = require('gulp'),
     clean = require('gulp-clean'),
     jade = require('gulp-jade'),
     plumber = require('gulp-plumber'),
+    stylus = require('gulp-stylus'),
     browserify = require('gulp-browserify'),
     uglify = require('gulp-uglify'),
     gulpif = require('gulp-if'),
@@ -35,10 +36,19 @@ gulp.task('scripts', function () {
         .pipe(gulp.dest(paths.dest + 'assets/scripts'));
 });
 
-gulp.task('stylesheets', function () {
-    return gulp.src(paths.stylesheets + '**')
+gulp.task('css', function () {
+    return gulp.src(paths.stylesheets + '**/*.css')
         .pipe(gulp.dest(paths.dest + 'assets/stylesheets'));
 });
+
+gulp.task('stylus', function () {
+    return gulp.src(paths.stylesheets + '**/*.styl')
+        .pipe(plumber())
+        .pipe(stylus())
+        .pipe(gulp.dest(paths.dest + 'assets/stylesheets'));
+});
+
+gulp.task('stylesheets', ['css', 'stylus']);
 
 gulp.task('clean', function () {
     return gulp.src(paths.dest, {read: false})
@@ -72,10 +82,9 @@ gulp.task('refs', function () {
 
 gulp.task('watch', function () {
     gulp.watch(paths.templates + '**/*.jade', ['html']);
-
     gulp.watch(paths.app + '**/*.js', ['scripts']);
-
-    gulp.watch(paths.stylesheets + '**', ['stylesheets']);
+    gulp.watch(paths.stylesheets + '**/*.css', ['css']);
+    gulp.watch(paths.stylesheets + '**/*.styl', ['stylus']);
 });
 
 gulp.task('start', ['watch', 'serve']);
