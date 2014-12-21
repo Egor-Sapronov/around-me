@@ -3,65 +3,50 @@ html
     head
         meta(charset='utf-8')
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
-        title Index
+        title Arround me
         meta(name='description', content='')
         meta(name='viewport', content='width=device-width, initial-scale=1')
         <!-- build:css ../../assets/stylesheets/combined.css-->
-        link(rel='stylesheet', href='../../vendor/bootstrap/dist/css/bootstrap.css')
-        link(rel='stylesheet', href='../../assets/stylesheets/sticky-footer-navbar.css')
+        link(rel='stylesheet',href='../../vendor/materialize/dist/css/materialize.css')
         link(rel='stylesheet', href='../../assets/stylesheets/map.css')
         div
         <!-- endbuild -->
     body
-        nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
-            .container
-                .navbar-header
-                    button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
-                        span.sr-only Toggle navigation
-                        span.icon-bar
-                        span.icon-bar
-                        span.icon-bar
-                    a.navbar-brand(href='#') Project name
-                #navbar.collapse.navbar-collapse
-                    ul.nav.navbar-nav
-                        li.active
-                            a(href='#') Home
-                        li
-                            a(href='#about') About
-                        li
-                            a(href='#contact') Contact
-                        li.dropdown
-                            a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
-                                | Dropdown
-                                span.caret
-                            ul.dropdown-menu(role='menu')
-                                li
-                                    a(href='#') Action
-                                li
-                                    a(href='#') Another action
-                                li
-                                    a(href='#') Something else here
-                                li.divider
-                                li.dropdown-header Nav header
-                                li
-                                    a(href='#') Separated link
-                                li
-                                    a(href='#') One more separated link
+        include ./partials/navbar.jade
 
-        .container(ng-app='mainMap')
-            .page-header
+        section.section.no-pad-bot(id='index-banner')
+            .row
+                .col.s12(id='index-banner', ng-app='mainMap', ng-controller='mapController')
+                    ui-gmap-google-map(center='map.center', zoom='map.zoom')
 
-            div(ng-controller='mapController')
-                ui-gmap-google-map(center='map.center', zoom='map.zoom')
-        footer.footer
-            .container
-                p.text-muted Place sticky footer content here.
-        <!-- build:js ../../assets/scripts/combined.js-->
-        script(src='../../vendor/jquery/dist/jquery.js')
-        script(src='../../vendor/lodash/dist/lodash.js')
-        script(src='../../vendor/bootstrap/dist/js/bootstrap.js')
-        script(src='../../vendor/angular/angular.js')
-        script(src='../../vendor/angular-google-maps/dist/angular-google-maps.js')
-        script(src='../../assets/scripts/init.js')
-        div
-        <!-- endbuild -->
+        .container
+            section.section
+                .row
+                    .col.s12.m4
+                        .icon-block
+                            h2.center.light-blue-text
+                                i.mdi-social-public
+                            h5.center Explore
+                            p.light We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.
+                    .col.s12.m4
+                        .icon-block
+                            h2.center.light-blue-text
+                                i.mdi-content-add-circle-outline
+                            h5.center Create
+                            p.light We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.
+                    .col.s12.m4
+                        .icon-block
+                            h2.center.light-blue-text
+                                i.mdi-social-mood
+                            h5.center Communicate
+                            p.light We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.
+
+    <!-- build:js ../../assets/scripts/combined.js-->
+    script(src='../../vendor/jquery/dist/jquery.js')
+    script(src='../../vendor/materialize/dist/js/materialize.js')
+    script(src='../../vendor/lodash/dist/lodash.js')
+    script(src='../../vendor/angular/angular.js')
+    script(src='../../vendor/angular-google-maps/dist/angular-google-maps.js')
+    script(src='../../assets/scripts/init.js')
+    div
+    <!-- endbuild -->

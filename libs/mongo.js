@@ -3,9 +3,7 @@ var mongoose = require('mongoose'),
     config = require('./config'),
     User = require('./models/authSchema').User,
     Client = require('./models/authSchema').Client,
-    AccessToken = require('./models/authSchema').AccessToken,
-    Image = require('./models/imageSchema').Image,
-    Comment = require('./models/commentSchema').Comment;
+    AccessToken = require('./models/authSchema').AccessToken;
 
 mongoose.connect(config.get('mongoose:uri'));
 var db = mongoose.connection;
@@ -22,14 +20,7 @@ var UserModel = mongoose.model('User', User),
     ClientModel = mongoose.model('Client', Client),
     AccessTokenModel = mongoose.model('AccessToken', AccessToken);
 
-// Content models
-var ImageModel = mongoose.model('Image', Image),
-    CommentModel = mongoose.model('Comment', Comment);
-
 module.exports.UserModel = UserModel;
 module.exports.ClientModel = ClientModel;
 module.exports.AccessTokenModel = AccessTokenModel;
-
-module.exports.ImageModel = ImageModel;
-module.exports.CommentModel = CommentModel;
 
