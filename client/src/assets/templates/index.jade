@@ -14,13 +14,13 @@ html
     body
         include ./partials/navbar.jade
 
-        section
+        section.section.no-pad-bot(id='index-banner')
             .row
                 .col.s12(id='index-banner', ng-app='mainMap', ng-controller='mapController')
                     ui-gmap-google-map(center='map.center', zoom='map.zoom')
 
-        section
-            .container
+        .container
+            section.section
                 .row
                     .col.s12.m4
                         .icon-block
@@ -43,22 +43,6 @@ html
                             h5.center Speeds up development
 
                             p.light We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.
-
-        footer.orange
-            .container
-                .row
-                    .col.s12.m4
-                        .icon-block
-                            p.grey-text.lighten-4 We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.
-                    .col.s12.m4
-                        .icon-block
-                            p.grey-text.lighten-4 We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.
-                    .col.s12.m4
-                        .icon-block
-                            p.grey-text.lighten-4 We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.
-            .footer-copyright
-                .container
-                    a.orange-text.lighten-3(href='#') Arround-me
 
     <!-- build:js ../../assets/scripts/combined.js-->
     script(src='../../vendor/jquery/dist/jquery.js')

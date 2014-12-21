@@ -18,6 +18,11 @@ var gulp = require('gulp'),
         vendor: './client/src/vendor/'
     };
 
+gulp.task('fonts', function () {
+    gulp.src(paths.src + 'assets/font/**')
+        .pipe(gulp.dest(paths.dest + 'assets/font'));
+});
+
 gulp.task('html', function () {
     return gulp.src(paths.templates + '**/*.jade')
         .pipe(jade({pretty: true}))
