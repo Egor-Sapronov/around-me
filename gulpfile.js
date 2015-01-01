@@ -3,7 +3,8 @@ var gulp = require('gulp'),
     jade = require('gulp-jade'),
     plumber = require('gulp-plumber'),
     stylus = require('gulp-stylus'),
-    browserify = require('gulp-browserify'),
+    browserify = require('browserify'),
+    transform = require('vinyl-transform'),
     uglify = require('gulp-uglify'),
     gulpif = require('gulp-if'),
     cssmin = require('gulp-cssmin'),
@@ -34,10 +35,14 @@ gulp.task('vendor', function () {
         .pipe(gulp.dest(paths.dest + 'vendor'));
 });
 
-gulp.task('scripts', function () {
-    return gulp.src(paths.app + 'init.js')
-        .pipe(plumber())
-        .pipe(browserify())
+gulp.task('browserify', function () {
+    var browserified = transform(function(filename) {
+        var b = browserify(filename);
+        return b.bundle();
+    });
+
+    return gulp.src([paths.app + 'init.js'])
+        .pipe(browserified)
         .pipe(gulp.dest(paths.dest + 'assets/scripts'));
 });
 
@@ -94,5 +99,5 @@ gulp.task('watch', function () {
 
 gulp.task('start', ['watch', 'serve']);
 
-gulp.task('build', ['html', 'scripts', 'vendor', 'stylesheets']);
+gulp.task('build', ['html', 'browserify', 'vendor', 'stylesheets']);
 
