@@ -3,12 +3,14 @@ var gulp = require('gulp'),
     jade = require('gulp-jade'),
     plumber = require('gulp-plumber'),
     stylus = require('gulp-stylus'),
-    browserify = require('gulp-browserify'),
+    browserify = require('browserify'),
+    jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
-    gulpif = require('gulp-if'),
     cssmin = require('gulp-cssmin'),
-    useref = require('gulp-useref'),
-    uncss = require('gulp-uncss'),
+    gulpif = require('gulp-if'),
+    transform = require('vinyl-transform'),
+    argv = require('yargs').argv,
+    log = require('./libs/log')(module),
     paths = {
         src: './client/src/',
         app: './client/src/app/',
@@ -16,15 +18,23 @@ var gulp = require('gulp'),
         templates: './client/src/assets/templates/',
         stylesheets: './client/src/assets/stylesheets/',
         vendor: './client/src/vendor/'
-    };
+    },
+    production;
+
+if (argv.production || argv.prod) {
+    production = true;
+    log.info('Production build');
+}
 
 gulp.task('fonts', function () {
-    gulp.src(paths.src + 'assets/font/**')
+    return gulp.src(paths.src + 'assets/font/**')
+        .pipe(plumber())
         .pipe(gulp.dest(paths.dest + 'assets/font'));
 });
 
 gulp.task('html', function () {
     return gulp.src(paths.templates + '**/*.jade')
+        .pipe(plumber())
         .pipe(jade({pretty: true}))
         .pipe(gulp.dest(paths.dest + 'assets/templates'));
 });
@@ -34,15 +44,31 @@ gulp.task('vendor', function () {
         .pipe(gulp.dest(paths.dest + 'vendor'));
 });
 
-gulp.task('scripts', function () {
-    return gulp.src(paths.app + 'init.js')
+gulp.task('jshint', function () {
+    return gulp.src(paths.app + '**/*.js')
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'));
+});
+
+gulp.task('browserify', function () {
+    var browserified = transform(function (filename) {
+        var b = browserify(filename);
+        return b.bundle();
+    });
+
+    return gulp.src([paths.src + 'app.js'])
         .pipe(plumber())
-        .pipe(browserify())
+        .pipe(browserified)
+        .pipe(gulpif(production, uglify()))
         .pipe(gulp.dest(paths.dest + 'assets/scripts'));
 });
 
+gulp.task('scripts', ['jshint', 'browserify']);
+
 gulp.task('css', function () {
     return gulp.src(paths.stylesheets + '**/*.css')
+        .pipe(plumber())
+        .pipe(gulpif(production, cssmin()))
         .pipe(gulp.dest(paths.dest + 'assets/stylesheets'));
 });
 
@@ -50,6 +76,7 @@ gulp.task('stylus', function () {
     return gulp.src(paths.stylesheets + '**/*.styl')
         .pipe(plumber())
         .pipe(stylus())
+        .pipe(gulpif(production, cssmin()))
         .pipe(gulp.dest(paths.dest + 'assets/stylesheets'));
 });
 
@@ -57,6 +84,7 @@ gulp.task('stylesheets', ['css', 'stylus']);
 
 gulp.task('clean', function () {
     return gulp.src(paths.dest, {read: false})
+        .pipe(plumber())
         .pipe(clean());
 });
 
@@ -68,21 +96,6 @@ gulp.task('serve', function () {
     app.listen(config.get('port'), function () {
         log.info('Express server listening on port ' + config.get('port'));
     });
-});
-
-gulp.task('refs', function () {
-    var assets = useref.assets();
-
-    return gulp.src(paths.dest + 'assets/templates/index.html')
-        .pipe(assets)
-        .pipe(gulpif('*.css', uncss({
-            html: [paths.dest + 'assets/templates/index.html']
-        })))
-        .pipe(gulpif('*.css', cssmin()))
-        .pipe(gulpif('*.js', uglify()))
-        .pipe(assets.restore())
-        .pipe(useref())
-        .pipe(gulp.dest(paths.dest + 'assets/templates'));
 });
 
 gulp.task('watch', function () {
