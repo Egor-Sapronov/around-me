@@ -5,6 +5,8 @@ var gulp = require('gulp'),
     stylus = require('gulp-stylus'),
     browserify = require('browserify'),
     jshint = require('gulp-jshint'),
+    uglify = require('gulp-uglify'),
+    gulpif = require('gulp-if'),
     transform = require('vinyl-transform'),
     argv = require('yargs').argv,
     log = require('./libs/log')(module),
@@ -56,6 +58,7 @@ gulp.task('browserify', function () {
     return gulp.src([paths.src + 'app.js'])
         .pipe(plumber())
         .pipe(browserified)
+        .pipe(gulpif(production, uglify()))
         .pipe(gulp.dest(paths.dest + 'assets/scripts'));
 });
 
