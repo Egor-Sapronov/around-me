@@ -62,6 +62,8 @@ gulp.task('browserify', function () {
         .pipe(gulp.dest(paths.dest + 'assets/scripts'));
 });
 
+gulp.task('scripts', ['jshint', 'browserify']);
+
 gulp.task('css', function () {
     return gulp.src(paths.stylesheets + '**/*.css')
         .pipe(plumber())
@@ -95,12 +97,12 @@ gulp.task('serve', function () {
 
 gulp.task('watch', function () {
     gulp.watch(paths.templates + '**/*.jade', ['html']);
-    gulp.watch(paths.app + '**/*.js', ['browserify']);
+    gulp.watch(paths.app + '**/*.js', ['scripts']);
     gulp.watch(paths.stylesheets + '**/*.css', ['css']);
     gulp.watch(paths.stylesheets + '**/*.styl', ['stylus']);
 });
 
 gulp.task('start', ['watch', 'serve']);
 
-gulp.task('build', ['html', 'browserify', 'vendor', 'stylesheets']);
+gulp.task('build', ['html', 'scripts', 'vendor', 'stylesheets']);
 
