@@ -27,7 +27,7 @@ if (argv.production || argv.prod) {
 }
 
 gulp.task('fonts', function () {
-    gulp.src(paths.src + 'assets/font/**')
+    return gulp.src(paths.src + 'assets/font/**')
         .pipe(plumber())
         .pipe(gulp.dest(paths.dest + 'assets/font'));
 });
