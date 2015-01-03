@@ -36,12 +36,12 @@ gulp.task('vendor', function () {
 });
 
 gulp.task('browserify', function () {
-    var browserified = transform(function(filename) {
+    var browserified = transform(function (filename) {
         var b = browserify(filename);
         return b.bundle();
     });
 
-    return gulp.src([paths.app + 'init.js'])
+    return gulp.src([paths.app + 'app.js'])
         .pipe(browserified)
         .pipe(gulp.dest(paths.dest + 'assets/scripts'));
 });
@@ -92,7 +92,7 @@ gulp.task('refs', function () {
 
 gulp.task('watch', function () {
     gulp.watch(paths.templates + '**/*.jade', ['html']);
-    gulp.watch(paths.app + '**/*.js', ['scripts']);
+    gulp.watch(paths.app + '**/*.js', ['browserify']);
     gulp.watch(paths.stylesheets + '**/*.css', ['css']);
     gulp.watch(paths.stylesheets + '**/*.styl', ['stylus']);
 });
