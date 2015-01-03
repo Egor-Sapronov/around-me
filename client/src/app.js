@@ -3,4 +3,4 @@ var jquery = require('jquery'),
     lodash = require('lodash'),
     angular = require('angular'),
     angularGoogleMaps = require('angular-google-maps'),
-    init = require('./init.js');
+    init = require('./app/init.js');

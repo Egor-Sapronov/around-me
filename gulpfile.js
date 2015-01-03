@@ -41,7 +41,7 @@ gulp.task('browserify', function () {
         return b.bundle();
     });
 
-    return gulp.src([paths.app + 'app.js'])
+    return gulp.src([paths.src + 'app.js'])
         .pipe(browserified)
         .pipe(gulp.dest(paths.dest + 'assets/scripts'));
 });
