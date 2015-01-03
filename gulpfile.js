@@ -5,11 +5,6 @@ var gulp = require('gulp'),
     stylus = require('gulp-stylus'),
     browserify = require('browserify'),
     transform = require('vinyl-transform'),
-    uglify = require('gulp-uglify'),
-    gulpif = require('gulp-if'),
-    cssmin = require('gulp-cssmin'),
-    useref = require('gulp-useref'),
-    uncss = require('gulp-uncss'),
     paths = {
         src: './client/src/',
         app: './client/src/app/',
@@ -73,21 +68,6 @@ gulp.task('serve', function () {
     app.listen(config.get('port'), function () {
         log.info('Express server listening on port ' + config.get('port'));
     });
-});
-
-gulp.task('refs', function () {
-    var assets = useref.assets();
-
-    return gulp.src(paths.dest + 'assets/templates/index.html')
-        .pipe(assets)
-        .pipe(gulpif('*.css', uncss({
-            html: [paths.dest + 'assets/templates/index.html']
-        })))
-        .pipe(gulpif('*.css', cssmin()))
-        .pipe(gulpif('*.js', uglify()))
-        .pipe(assets.restore())
-        .pipe(useref())
-        .pipe(gulp.dest(paths.dest + 'assets/templates'));
 });
 
 gulp.task('watch', function () {
