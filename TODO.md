@@ -1,0 +1,3 @@
+- basic auth on the client
+- load profile image
+- account public link
