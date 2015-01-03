@@ -6,6 +6,8 @@ var gulp = require('gulp'),
     browserify = require('browserify'),
     jshint = require('gulp-jshint'),
     transform = require('vinyl-transform'),
+    argv = require('yargs').argv,
+    log = require('./libs/log')(module),
     paths = {
         src: './client/src/',
         app: './client/src/app/',
@@ -13,7 +15,13 @@ var gulp = require('gulp'),
         templates: './client/src/assets/templates/',
         stylesheets: './client/src/assets/stylesheets/',
         vendor: './client/src/vendor/'
-    };
+    },
+    production;
+
+if (argv.production || argv.prod) {
+    production = true;
+    log.info('Production build');
+}
 
 gulp.task('fonts', function () {
     gulp.src(paths.src + 'assets/font/**')
