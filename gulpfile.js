@@ -6,6 +6,7 @@ var gulp = require('gulp'),
     browserify = require('browserify'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
+    cssmin = require('gulp-cssmin'),
     gulpif = require('gulp-if'),
     transform = require('vinyl-transform'),
     argv = require('yargs').argv,
@@ -67,6 +68,7 @@ gulp.task('scripts', ['jshint', 'browserify']);
 gulp.task('css', function () {
     return gulp.src(paths.stylesheets + '**/*.css')
         .pipe(plumber())
+        .pipe(gulpif(production, cssmin()))
         .pipe(gulp.dest(paths.dest + 'assets/stylesheets'));
 });
 
@@ -74,6 +76,7 @@ gulp.task('stylus', function () {
     return gulp.src(paths.stylesheets + '**/*.styl')
         .pipe(plumber())
         .pipe(stylus())
+        .pipe(gulpif(production, cssmin()))
         .pipe(gulp.dest(paths.dest + 'assets/stylesheets'));
 });
 
