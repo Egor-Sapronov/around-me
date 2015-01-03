@@ -4,6 +4,7 @@ var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
     stylus = require('gulp-stylus'),
     browserify = require('browserify'),
+    jshint = require('gulp-jshint'),
     transform = require('vinyl-transform'),
     paths = {
         src: './client/src/',
@@ -30,6 +31,12 @@ gulp.task('html', function () {
 gulp.task('vendor', function () {
     return gulp.src(paths.vendor + '**')
         .pipe(gulp.dest(paths.dest + 'vendor'));
+});
+
+gulp.task('jshint', function () {
+    return gulp.src(paths.app + '**/*.js')
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'));
 });
 
 gulp.task('browserify', function () {
