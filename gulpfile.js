@@ -1,3 +1,5 @@
+'use strict';
+
 var gulp = require('gulp'),
     clean = require('gulp-clean'),
     jade = require('gulp-jade'),
@@ -17,6 +19,7 @@ var gulp = require('gulp'),
         dest: './client/build/',
         templates: './client/src/assets/templates/',
         stylesheets: './client/src/assets/stylesheets/',
+        images: './client/src/assets/images/',
         vendor: './client/src/vendor/'
     },
     production;
@@ -82,6 +85,12 @@ gulp.task('stylus', function () {
 
 gulp.task('stylesheets', ['css', 'stylus']);
 
+gulp.task('images', function () {
+    return gulp.src(paths.images + '**')
+        .pipe(plumber())
+        .pipe(gulp.dest(paths.dest + 'assets/images'));
+});
+
 gulp.task('clean', function () {
     return gulp.src(paths.dest, {read: false})
         .pipe(plumber())
@@ -107,5 +116,5 @@ gulp.task('watch', function () {
 
 gulp.task('start', ['watch', 'serve']);
 
-gulp.task('build', ['html', 'scripts', 'vendor', 'stylesheets']);
+gulp.task('build', ['html', 'scripts', 'vendor', 'images', 'stylesheets']);
 
