@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express'),
     path = require('path'),
     logger = require('morgan'),
@@ -15,9 +17,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(compression({threshold: 512}));
 
-app.get('/',
-    function (req, res) {
-        res.sendFile(path.join(__dirname, 'client/build/assets/templates/index.html'));
-    });
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname, 'client/build/assets/templates/index.html'));
+});
+
+app.get('/account', function (req, res) {
+    res.sendFile(path.join(__dirname, 'client/build/assets/templates/partials/account/layout.html'));
+});
 
 module.exports = app;
