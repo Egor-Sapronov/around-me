@@ -9,7 +9,7 @@ html
         link(rel='stylesheet',href='../../vendor/materialize/dist/css/materialize.css')
         link(rel='stylesheet', href='../../assets/stylesheets/site.css')
     body
-        nav.light-blue.lighten-1
+        nav.light-green.lighten-1
             .container
                 .nav-wrapper
                     a.brand-logo(id="logo-container", href='/') Account
@@ -20,25 +20,22 @@ html
                         .card-image
                             img.responsive-img(src='../../assets/images/profileExamle.jpg')
                         .card-content
-                            ul.collection.with-header
-                                li.collection-header
-                                    h4 Egor
-                                li.collection-item
+                            ul.collection
+                                a.collection-item
+                                    | Egor
+                                    span.badge
+                                        | share
+                                        i.mdi-social-share.right
+                                a.collection-item
                                     | Likes
                                     span.badge
                                         | 43
-                                        i.mdi-action-favorite
-                                li.collection-item
+                                        i.mdi-action-favorite.right
+                                a.collection-item
                                     | Photos
                                     span.badge
                                         | 176
-                                        i.mdi-image-collections
-
-
-
-
-
-
+                                        i.mdi-image-collections.right
                 .col.m10.s12(id='index-banner', ng-app='mainMap', ng-controller='mapController')
                             .card
                                 ui-gmap-google-map(center='map.center', zoom='map.zoom')
