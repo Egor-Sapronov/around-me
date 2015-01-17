@@ -20,5 +20,6 @@ function mapController($scope, uiGmapGoogleMapApi) {
     });
 }
 
-
+// Plugin initialization
 $('.button-collapse').sideNav();
+

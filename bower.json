@@ -13,7 +13,8 @@
     "angular-route": "*",
     "angular-mocks": "*",
     "bootstrap-material-design": "~0.1.4",
-    "angular-google-maps": "~2.0.9"
+    "angular-google-maps": "~2.0.9",
+    "materialize": "~0.95.0"
   },
   "ignore": [
     "**/.*",
