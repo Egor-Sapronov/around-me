@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('mainMap', ['uiGmapgoogle-maps'])
     .config(mapConfig)
     .controller('mapController', mapController);
