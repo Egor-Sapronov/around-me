@@ -15,7 +15,7 @@ html
                     a.brand-logo(id="logo-container", href='/') Account
         section.section.no-pad-bot(id='index-banner')
             .row
-                .col.m2.s12
+                .col.l2.m4.s12
                     .card
                         .card-image
                             img.responsive-img(src='../../assets/images/profileExamle.jpg')
@@ -36,7 +36,7 @@ html
                                     span.badge
                                         | 176
                                         i.mdi-image-collections.right
-                .col.m10.s12(id='index-banner', ng-app='mainMap', ng-controller='mapController')
-                            .card
-                                ui-gmap-google-map(center='map.center', zoom='map.zoom')
+                .col.l10.m8.s12(id='index-banner', ng-app='mainMap', ng-controller='mapController')
+                    .card
+                        ui-gmap-google-map(center='map.center', zoom='map.zoom')
         script(src='../../assets/scripts/app.js')
