@@ -1,4 +1,3 @@
-@import '../../vendor/materialize/dist/css/materialize.css';
 .dark-primary-color {
   background: #0288d1;
 }
@@ -25,11 +24,4 @@
 }
 .divider-color {
   border-color: #b6b6b6;
-}
-.angular-google-map,
-.angular-google-map-container {
-  height: 60vh;
-}
-.waves-effect.waves-light-green-lighten-1 .waves-ripple {
-  background-color: #9ccc65;
 }

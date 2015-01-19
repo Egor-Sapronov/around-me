@@ -8,7 +8,7 @@ html
         meta(name='viewport', content='width=device-width, initial-scale=1')
         link(rel='stylesheet', href='../../assets/stylesheets/site.css')
     body
-        nav.light-green.lighten-1
+        nav.default-primary-color
             .container
                 .nav-wrapper
                     a.brand-logo(id="logo-container", href='/') Sign in
@@ -19,7 +19,7 @@ html
                         .card
                             .card-content
                                 header
-                                    span.card-title.grey-text.darken-7 Sign in
+                                    h2.header Sign up
                                 .input-field
                                     i.mdi-action-account-circle.prefix
                                     input.validate(id='username', type='text')
@@ -36,4 +36,9 @@ html
                                     i.mdi-communication-vpn-key.prefix
                                     input.validate(id='confirm-password', type='password')
                                     label(for='confirm-password') Confirm password
+                                .input-field
+                                    button.btn.waves-effect.waves-light
+                                        | Sign up
+                                        i.mdi-content-send.right
+                                    a.btn-flat.waves-effect.waves-teal Log in
         script(src='../../assets/scripts/app.js')
