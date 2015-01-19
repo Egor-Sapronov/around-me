@@ -29,4 +29,8 @@ app.get('/account/signup', function (req, res) {
     res.sendFile(path.join(__dirname, 'client/build/assets/templates/partials/account/signup.html'));
 });
 
+app.get('/account/signin', function (req, res) {
+    res.sendFile(path.join(__dirname, 'client/build/assets/templates/partials/account/signin.html'));
+});
+
 module.exports = app;

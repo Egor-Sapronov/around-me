@@ -3,7 +3,7 @@ html
     head
         meta(charset='utf-8')
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
-        title Sign up
+        title Sign in
         meta(name='description', content='')
         meta(name='viewport', content='width=device-width, initial-scale=1')
         link(rel='stylesheet', href='../../assets/stylesheets/site.css')
@@ -19,11 +19,7 @@ html
                         .card
                             .card-content
                                 header
-                                    h2.header Sign up
-                                .input-field
-                                    i.mdi-action-account-circle.prefix
-                                    input.validate(id='username', type='text')
-                                    label(for='username') Username
+                                    h2.header Sign in
                                 .input-field
                                     i.mdi-communication-email.prefix
                                     input.validate(id='email', type='email')
@@ -31,14 +27,10 @@ html
                                 .input-field
                                     i.mdi-communication-vpn-key.prefix
                                     input.validate(id='password', type='password')
-                                    label(for='password') Password
-                                .input-field
-                                    i.mdi-communication-vpn-key.prefix
-                                    input.validate(id='confirm-password', type='password')
-                                    label(for='confirm-password') Confirm password
+                                    label(for='password') password
                                 .input-field
                                     button.btn.waves-effect.waves-light
-                                        | Sign up
+                                        | Sign in
                                         i.mdi-content-send.right
-                                    a.btn-flat.waves-effect.waves-teal(href='/account/signin') Sign in
+                                    a.btn-flat.waves-effect.waves-teal(href='/account/signup') Sign up
         script(src='../../assets/scripts/app.js')
