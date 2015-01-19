@@ -13,7 +13,8 @@ html
         section.section.no-pad-bot(id='index-banner')
             .row
                 .col.s12(id='index-banner', ng-app='mainMap', ng-controller='mapController')
-                    ui-gmap-google-map(center='map.center', zoom='map.zoom')
+                    .card
+                        ui-gmap-google-map(center='map.center', zoom='map.zoom')
 
         .container
             section.section

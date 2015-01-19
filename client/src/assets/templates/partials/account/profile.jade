@@ -11,10 +11,10 @@ html
         nav.default-primary-color
             .container
                 .nav-wrapper
-                    a.brand-logo(id="logo-container", href='/') Egor
+                    a.brand-logo(id="logo-container", href='/') Around me
         section.section.no-pad-bot(id='index-banner')
             .row
-                .col.l2.m4.s12
+                .col.l2.s12
                     .card
                         .card-image
                             img.responsive-img(src='../../assets/images/profileExamle.jpg')
@@ -35,7 +35,7 @@ html
                                     span.badge
                                         | 176
                                         i.mdi-image-collections.right
-                .col.l10.m8.s12(id='index-banner', ng-app='mainMap', ng-controller='mapController')
+                .col.l10.s12(id='index-banner', ng-app='mainMap', ng-controller='mapController')
                     .card
                         ui-gmap-google-map(center='map.center', zoom='map.zoom')
         script(src='../../assets/scripts/app.js')
