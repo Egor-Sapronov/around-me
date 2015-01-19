@@ -1,17 +1,39 @@
 doctype
 html
-   head
-      meta(charset='utf-8')
-      meta(http-equiv='X-UA-Compatible', content='IE=edge')
-      title Sign in
-      meta(name='description', content='')
-      meta(name='viewport', content='width=device-width, initial-scale=1')
-      link(rel='stylesheet', href='../../assets/stylesheets/site.css')
-   body
-      nav.light-green.lighten-1
-         .container
-            .nav-wrapper
-               a.brand-logo(id="logo-container", href='/') Sign in
-      section.section.no-pad-bot(id='index-banner')
-
-      script(src='../../assets/scripts/app.js')
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        title Sign in
+        meta(name='description', content='')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(rel='stylesheet', href='../../assets/stylesheets/site.css')
+    body
+        nav.light-green.lighten-1
+            .container
+                .nav-wrapper
+                    a.brand-logo(id="logo-container", href='/') Sign in
+        section.section.no-pad-bot(id='index-banner')
+            .container
+                .row
+                    .col.m6.s12
+                        .card
+                            .card-content
+                                header
+                                    span.card-title.grey-text.darken-7 Sign in
+                                .input-field
+                                    i.mdi-action-account-circle.prefix
+                                    input.validate(id='username', type='text')
+                                    label(for='username') Username
+                                .input-field
+                                    i.mdi-communication-email.prefix
+                                    input.validate(id='email', type='email')
+                                    label(for='email') Email
+                                .input-field
+                                    i.mdi-communication-vpn-key.prefix
+                                    input.validate(id='password', type='password')
+                                    label(for='password') Password
+                                .input-field
+                                    i.mdi-communication-vpn-key.prefix
+                                    input.validate(id='confirm-password', type='password')
+                                    label(for='confirm-password') Confirm password
+        script(src='../../assets/scripts/app.js')
