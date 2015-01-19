@@ -22,7 +22,11 @@ app.get('/', function (req, res) {
 });
 
 app.get('/account', function (req, res) {
-    res.sendFile(path.join(__dirname, 'client/build/assets/templates/partials/account/layout.html'));
+    res.sendFile(path.join(__dirname, 'client/build/assets/templates/partials/account/profile.html'));
+});
+
+app.get('/account/signin', function (req, res) {
+    res.sendFile(path.join(__dirname, 'client/build/assets/templates/partials/account/signin.html'));
 });
 
 module.exports = app;
