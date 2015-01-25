@@ -1,7 +1,7 @@
 'use strict';
 require('./auth/controllers');
 
-angular.module('mainMap', ['uiGmapgoogle-maps'])
+angular.module('mainMap', ['uiGmapgoogle-maps', 'components.auth'])
     .config(mapConfig)
     .controller('mapController', mapController);
 

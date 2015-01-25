@@ -1,8 +1,8 @@
 'use strict';
 require('./service');
 
-angular.module('components.auth.controllers', ['components.auth.service']);
-angular.module('components.auth.controllers')
+angular.module('components.auth', ['components.auth.service']);
+angular.module('components.auth')
     .controller("LoginController", LoginController);
 
 LoginController.$inject = ['$window', '$location', 'userService', 'authenticationService'];
