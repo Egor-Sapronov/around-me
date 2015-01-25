@@ -39,7 +39,6 @@ server.exchange(oauth2orize.exchange.password(function (client, username, passwo
     });
 }));
 
-
 // token endpoint
 exports.token = [
     passport.authenticate(['basic', 'oauth2-client-password'], {session: false}),
