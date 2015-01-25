@@ -80,7 +80,6 @@ gulp.task('stylus', function () {
     return gulp.src(paths.stylesheets + '**/*.styl')
         .pipe(plumber())
         .pipe(stylus())
-        .pipe(gulpif(production, cssmin()))
         .pipe(gulp.dest(paths.dest + 'assets/stylesheets'));
 });
 
