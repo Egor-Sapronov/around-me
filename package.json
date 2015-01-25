@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "preinstall": "npm run vendor && npm run build",
+    "postinstall": "npm run vendor && npm run build",
     "build": "./node_modules/gulp/bin/gulp build --prod",
     "vendor": "./node_modules/bower/bin/bower i"
   },
