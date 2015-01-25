@@ -1,6 +1,7 @@
 var oauth2orize = require('oauth2orize'),
     passport = require('passport'),
     crypto = require('crypto'),
+    auth = require('./auth'),
     UserModel = require('./mongo').UserModel,
     ClientModel = require('./mongo').ClientModel,
     AccessTokenModel = require('./mongo').AccessTokenModel,
@@ -37,29 +38,6 @@ server.exchange(oauth2orize.exchange.password(function (client, username, passwo
         });
     });
 }));
-
-function logOff(username, done) {
-
-}
-
-exports.logOff = logOff;
-
-function register(username, password, done) {
-    var user = new UserModel({username: username, password: password});
-
-    user.save(function (err, user) {
-        if (err) {
-            done(err, null);
-            return log.error(err);
-        }
-        else {
-            done(null, user);
-            log.info("New user - %s:%s", user.username, user.password);
-        }
-    });
-}
-
-exports.register = register;
 
 
 // token endpoint
