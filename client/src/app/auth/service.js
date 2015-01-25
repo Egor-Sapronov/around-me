@@ -13,6 +13,9 @@ function userService($http, $window) {
                 username: username,
                 password: password
             });
+        },
+        register: function (registerData) {
+            return $http.post('/oauth/register', registerData);
         }
     };
 }
