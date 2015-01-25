@@ -23,3 +23,7 @@ ClientModel.remove({}, function (err) {
 AccessTokenModel.remove({}, function (err) {
     if (err) return log.error(err);
 });
+
+setTimeout(function() {
+    mongoose.disconnect();
+}, 3000);
