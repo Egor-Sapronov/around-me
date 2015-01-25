@@ -1,0 +1,41 @@
+doctype
+html
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        title Egor
+        meta(name='description', content='')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(rel='stylesheet', href='../../assets/stylesheets/site.css')
+    body
+        nav.default-primary-color
+            .container
+                .nav-wrapper
+                    a.brand-logo(id="logo-container", href='/') Around me
+        section.section.no-pad-bot(id='index-banner')
+            .row
+                .col.l2.s12
+                    .card
+                        .card-image
+                            img.responsive-img(src='../../assets/images/profileExamle.jpg')
+                        .card-content
+                            ul.collection
+                                a.collection-item.waves-effect.waves-light-green-lighten-1
+                                    | Egor
+                                    span.badge
+                                        | share
+                                        i.mdi-social-share.right
+                                a.collection-item.waves-effect.waves-light-green-lighten-1
+                                    | Likes
+                                    span.badge
+                                        | 43
+                                        i.mdi-action-favorite.right
+                                a.collection-item.waves-effect.waves-light-green-lighten-1
+                                    | Photos
+                                    span.badge
+                                        | 176
+                                        i.mdi-image-collections.right
+                .col.l10.s12(id='index-banner', ng-app='mainMap', ng-controller='mapController')
+                    .card
+                        ui-gmap-google-map(center='map.center', zoom='map.zoom')
+        script(src='../../assets/scripts/app.js')

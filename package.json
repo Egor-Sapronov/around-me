@@ -4,7 +4,10 @@
   "private": true,
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "preinstall": "npm run vendor && npm run build",
+    "build": "gulp build --prod",
+    "vendor": "bower i"
   },
   "engines": {
     "node": "0.10.x"
@@ -49,9 +52,7 @@
     "passport-http": "~0.2.2",
     "passport-http-bearer": "~1.0.1",
     "passport-oauth2-client-password": "~0.1.2",
-    "compression": "~1.2.2"
-  },
-  "devDependencies": {
+    "compression": "~1.2.2",
     "jasmine": "~2.0.1",
     "gulp": "~3.8.10",
     "gulp-clean": "^0.3.1",

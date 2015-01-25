@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('mainMap', ['uiGmapgoogle-maps'])
     .config(mapConfig)
     .controller('mapController', mapController);
@@ -20,5 +22,6 @@ function mapController($scope, uiGmapGoogleMapApi) {
     });
 }
 
-
+// Plugin initialization
 $('.button-collapse').sideNav();
+

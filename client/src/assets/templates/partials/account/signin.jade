@@ -1,0 +1,36 @@
+doctype
+html
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        title Sign in
+        meta(name='description', content='')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(rel='stylesheet', href='../../assets/stylesheets/site.css')
+    body
+        nav.default-primary-color
+            .container
+                .nav-wrapper
+                    a.brand-logo(id="logo-container", href='/') Around me
+        section.section.no-pad-bot(id='index-banner')
+            .container
+                .row
+                    .col.m6.s12
+                        .card
+                            .card-content
+                                header
+                                    h2.header Sign in
+                                .input-field
+                                    i.mdi-communication-email.prefix
+                                    input.validate(id='email', type='email')
+                                    label(for='email') Email
+                                .input-field
+                                    i.mdi-communication-vpn-key.prefix
+                                    input.validate(id='password', type='password')
+                                    label(for='password') password
+                                .input-field
+                                    button.btn.waves-effect.waves-light
+                                        | Sign in
+                                        i.mdi-content-send.right
+                                    a.btn-flat.waves-effect.waves-teal(href='/account/signup') Sign up
+        script(src='../../assets/scripts/app.js')

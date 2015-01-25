@@ -1,14 +1,18 @@
-nav.light-blue.lighten-1
+nav.default-primary-color
     .container
         .nav-wrapper
-            a.brand-logo(id="logo-container", href='#') Arround me
+            a.brand-logo(id="logo-container", href='#') Around me
             ul.right.side-nav(id='nav-mobile')
                 li.waves-effect.waves-light.hide-on-med-and-down
                     a(href='#') Map
                 li.waves-effect.waves-light.hide-on-med-and-down
                     a(href='#') Upload
                 li.waves-effect.waves-light.hide-on-med-and-down
-                    a(href='#') Account
+                    a(href='/account') Account
+                li.waves-effect.waves-light.hide-on-med-and-down
+                    a(href='/account/signin') Sign in
+                li.waves-effect.waves-light.hide-on-med-and-down
+                    a(href='/account/signup') Sign up
                 li.waves-effect.waves-light.hide-on-large-only
                     a(href='#')
                         i.mdi-maps-place.left
