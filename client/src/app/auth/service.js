@@ -2,8 +2,8 @@
 
 angular.module('components.auth.service', []);
 
-userService.$inject = ['$http', '$window'];
-function userService($http, $window) {
+userService.$inject = ['$http'];
+function userService($http) {
     return {
         login: function (username, password) {
             return $http.post('/oauth/token', {
@@ -16,6 +16,9 @@ function userService($http, $window) {
         },
         register: function (registerData) {
             return $http.post('/oauth/register', registerData);
+        },
+        userInfo: function () {
+            return $http.get('/oauth/userInfo');
         }
     };
 }
