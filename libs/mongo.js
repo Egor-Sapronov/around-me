@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
     Client = require('./models/authSchema').Client,
     AccessToken = require('./models/authSchema').AccessToken;
 
-mongoose.connect(config.get('mongoose:uri'));
+mongoose.connect(process.env.MONGOLAB_URI || config.get('mongoose:uri'));
 var db = mongoose.connection;
 
 db.on('error', function (err) {
