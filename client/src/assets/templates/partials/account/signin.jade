@@ -12,24 +12,24 @@ html
             .container
                 .nav-wrapper
                     a.brand-logo(id="logo-container", href='/') Around me
-        section.section.no-pad-bot(id='index-banner')
+        section.section
             .container
                 .row
                     .col.m6.s12
                         .card
-                            .card-content
+                            .card-content(ng-controller='LoginController as vm')
                                 header
                                     h2.header Sign in
                                 .input-field
                                     i.mdi-communication-email.prefix
-                                    input.validate(id='email', type='email')
-                                    label(for='email') Email
+                                    input.validate(id='email', type='text', ng-model='username')
+                                    label(for='email') Username
                                 .input-field
                                     i.mdi-communication-vpn-key.prefix
-                                    input.validate(id='password', type='password')
-                                    label(for='password') password
+                                    input.validate(id='password', type='password', ng-model='password')
+                                    label(for='password') Password
                                 .input-field
-                                    button.btn.waves-effect.waves-light
+                                    button.btn.waves-effect.waves-light(ng-click='vm.login(username, password)')
                                         | Sign in
                                         i.mdi-content-send.right
                                     a.btn-flat.waves-effect.waves-teal(href='/account/signup') Sign up

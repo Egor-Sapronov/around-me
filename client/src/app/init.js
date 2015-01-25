@@ -1,4 +1,5 @@
 'use strict';
+require('./auth/controllers');
 
 angular.module('mainMap', ['uiGmapgoogle-maps'])
     .config(mapConfig)
