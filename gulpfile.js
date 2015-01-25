@@ -13,6 +13,7 @@ var gulp = require('gulp'),
     transform = require('vinyl-transform'),
     argv = require('yargs').argv,
     log = require('./libs/log')(module),
+    bower = require('bower'),
     paths = {
         src: './client/src/',
         app: './client/src/app/',
