@@ -2,6 +2,10 @@
 
 angular.module('components.auth.service', []);
 
+angular.module('components.auth.service')
+    .factory('userService', userService)
+    .factory('authenticationService', authenticationService);
+
 userService.$inject = ['$http'];
 function userService($http) {
     return {
@@ -21,4 +25,13 @@ function userService($http) {
             return $http.get('/oauth/userInfo');
         }
     };
+}
+
+function authenticationService() {
+    var auth = {
+        isLogged: false,
+        username: ''
+    };
+
+    return auth;
 }
