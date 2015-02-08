@@ -1,0 +1,25 @@
+extends ./navbar
+
+block links
+    li.waves-effect.waves-light.hide-on-med-and-down
+        a(href='#') Map
+    li.waves-effect.waves-light.hide-on-med-and-down
+        a(href='#') Upload
+    li.waves-effect.waves-light.hide-on-med-and-down
+        a(href='/account') Account
+    li.waves-effect.waves-light.hide-on-med-and-down
+        a(href='/account/signin') Sign in
+    li.waves-effect.waves-light.hide-on-med-and-down
+        a(href='/account/signup') Sign up
+    li.waves-effect.waves-light.hide-on-large-only
+        a(href='#')
+            i.mdi-maps-place.left
+            | Map
+    li.waves-effect.waves-light.hide-on-large-only
+        a(href='#')
+            i.mdi-file-file-upload.left
+            | Upload
+    li.waves-effect.waves-light.hide-on-large-only
+        a(href='#')
+            i.mdi-social-person.left
+            | Account

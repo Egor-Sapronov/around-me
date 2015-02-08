@@ -96,11 +96,9 @@ gulp.task('clean', function () {
 });
 
 gulp.task('serve', function () {
-    var app = require('./app'),
-        config = require('./libs/config'),
-        log = require('./libs/log')(module);
+    var app = require('./app');
 
-    app.listen(config.get('port'), function () {
+    app.listen(3000, function () {
 
     });
 });

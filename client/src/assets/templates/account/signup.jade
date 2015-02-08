@@ -1,0 +1,39 @@
+extends ../layout
+
+block title
+    title Sign up
+
+block header
+    header
+        include ../navigation/mainNav
+
+block content
+    section.section.no-pad-bot
+        .container
+            .row
+                .col.m6.s12
+                    .card
+                        .card-content
+                            header
+                                h2.header Sign up
+                            .input-field
+                                i.mdi-action-account-circle.prefix
+                                input.validate(id='username', type='text')
+                                label(for='username') Username
+                            .input-field
+                                i.mdi-communication-email.prefix
+                                input.validate(id='email', type='email')
+                                label(for='email') Email
+                            .input-field
+                                i.mdi-communication-vpn-key.prefix
+                                input.validate(id='password', type='password')
+                                label(for='password') Password
+                            .input-field
+                                i.mdi-communication-vpn-key.prefix
+                                input.validate(id='confirm-password', type='password')
+                                label(for='confirm-password') Confirm password
+                            .input-field
+                                button.btn.waves-effect.default-primary-color
+                                    | Sign up
+                                    i.mdi-content-send.right
+                                a.btn-flat(href='/account/signin') Sign in

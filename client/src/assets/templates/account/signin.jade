@@ -1,0 +1,31 @@
+extends ../layout
+
+block title
+    title Sign in
+
+block header
+    header
+        include ../navigation/mainNav
+
+block content
+    section.section
+        .container
+            .row
+                .col.m6.s12
+                    .card
+                        .card-content
+                            header
+                                h2.header Sign in
+                            .input-field
+                                i.mdi-communication-email.prefix
+                                input.validate(id='email', type='text')
+                                label(for='email') email
+                            .input-field
+                                i.mdi-communication-vpn-key.prefix
+                                input.validate(id='password', type='password')
+                                label(for='password') Password
+                            .input-field
+                                button.btn.waves-effect.default-primary-color
+                                    | Sign in
+                                    i.mdi-content-send.right
+                                a.btn-flat(href='/account/signup') Sign up
