@@ -29,6 +29,8 @@ node_modules
 
 .idea
 
+rundb.sh
+
 client/src/vendor
 
 client/build
