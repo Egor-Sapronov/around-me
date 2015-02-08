@@ -12,7 +12,6 @@ var gulp = require('gulp'),
     gulpif = require('gulp-if'),
     transform = require('vinyl-transform'),
     argv = require('yargs').argv,
-    log = require('./libs/log')(module),
     bower = require('bower'),
     paths = {
         src: './client/src/',
@@ -27,7 +26,6 @@ var gulp = require('gulp'),
 
 if (argv.production || argv.prod) {
     production = true;
-    log.info('Production build');
 }
 
 gulp.task('fonts', function () {

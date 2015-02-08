@@ -1,8 +1,18 @@
-var app = require('./app');
-var log = require('./libs/log')(module);
+'use strict';
 
-app.set('port', process.env.PORT || 5000);
+var app = require('./app'),
+    db = require('./libs/data/database');
 
-var server = app.listen(app.get('port'), function () {
-    log.info('Express server listening on port ' + server.address().port);
-});
+db.sequelize
+    .sync({force: true})
+    .then(function () {
+        return db.User.create({
+            username: 'egor',
+            password: '123456',
+            email: 'sapronov.egor@gmail.com'
+        })
+            .then(function () {
+                app.listen(process.env.PORT || 3000, function () {
+                });
+            });
+    });
