@@ -3,10 +3,9 @@
 var express = require('express'),
     path = require('path'),
     logger = require('morgan'),
-    cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
     compression = require('compression'),
-    oauth2 = require('./libs/oauth2'),
+    auth = require('./libs/auth/auth'),
     passport = require('passport'),
     app = express();
 
@@ -15,12 +14,10 @@ app.set('view engine',  'jade');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(compression({threshold: 512}));
 app.use(passport.initialize());
 
-app.post('/oauth/token', oauth2.token);
 
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, 'client/build/assets/templates/index.html'));
