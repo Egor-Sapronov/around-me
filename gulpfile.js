@@ -58,7 +58,7 @@ gulp.task('browserify', function () {
         return b.bundle();
     });
 
-    return gulp.src([paths.src + 'app.js'])
+    return gulp.src([paths.src + '/app/*.js'])
         .pipe(plumber())
         .pipe(browserified)
         .pipe(gulpif(production, uglify()))
@@ -101,7 +101,7 @@ gulp.task('serve', function () {
         log = require('./libs/log')(module);
 
     app.listen(config.get('port'), function () {
-        log.info('Express server listening on port ' + config.get('port'));
+
     });
 });
 

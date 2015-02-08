@@ -6,13 +6,14 @@ html
         title Egor
         meta(name='description', content='')
         meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(rel='stylesheet', href='../../vendor/materialize/dist/css/materialize.min.css')
         link(rel='stylesheet', href='../../assets/stylesheets/site.css')
     body
         nav.default-primary-color
             .container
                 .nav-wrapper
                     a.brand-logo(id="logo-container", href='/') Around me
-        section.section.no-pad-bot(id='index-banner')
+        section.section.no-pad-bot
             .row
                 .col.l2.s12
                     .card
@@ -35,7 +36,5 @@ html
                                     span.badge
                                         | 176
                                         i.mdi-image-collections.right
-                .col.l10.s12(id='index-banner', ng-app='mainMap', ng-controller='mapController')
-                    .card
-                        ui-gmap-google-map(center='map.center', zoom='map.zoom')
-        script(src='../../assets/scripts/app.js')
+                .col.l10.s12
+        script(src='../../assets/scripts/main.js')

@@ -6,15 +6,15 @@ html
         title Arround me
         meta(name='description', content='')
         meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(rel='stylesheet', href='../../vendor/materialize/dist/css/materialize.min.css')
         link(rel='stylesheet', href='../../assets/stylesheets/site.css')
     body
         include ./partials/navbar.jade
 
-        section.section.no-pad-bot(id='index-banner')
+        section.section.no-pad-bot
             .row
-                .col.s12(id='index-banner', ng-app='mainMap', ng-controller='mapController')
+                .col.s12
                     .card
-                        ui-gmap-google-map(center='map.center', zoom='map.zoom')
 
         .container
             section.section
@@ -37,4 +37,4 @@ html
                                 i.mdi-social-mood
                             h5.center Communicate
                             p.light We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.
-    script(src='../../assets/scripts/app.js')
+    script(src='../../assets/scripts/main.js')

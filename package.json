@@ -14,22 +14,11 @@
   },
   "browser": {
     "jquery": "./client/src/vendor/jquery/dist/jquery.js",
-    "materialize": "./client/src/vendor/materialize/dist/js/materialize.js",
-    "lodash": "./client/src/vendor/lodash/dist/lodash.js",
-    "angular": "./client/src/vendor/angular/angular.js",
-    "angular-google-maps": "./client/src/vendor/angular-google-maps/dist/angular-google-maps.js"
+    "materialize": "./client/src/vendor/materialize/dist/js/materialize.js"
   },
   "browserify-shim": {
     "jquery": "jquery",
-    "materialize": "materialize",
-    "lodash": "lodash",
-    "angular": "angular",
-    "angular-google-maps": {
-      "depends": [
-        "lodash",
-        "angular"
-      ]
-    }
+    "materialize": "materialize"
   },
   "browserify": {
     "transform": [
