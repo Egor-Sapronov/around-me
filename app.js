@@ -20,7 +20,7 @@ app.use(passport.initialize());
 app.use('/auth', authRouter);
 
 app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/client/build/assets/templates/index.html');
+    res.sendFile(__dirname + '/client/build/assets/templates/main/index.html');
 });
 
 app.get('/account/signin', function (req, res) {
