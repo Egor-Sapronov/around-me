@@ -11,7 +11,7 @@ block content
     section.section.no-pad-bot
         .container
             .row
-                .col.m6.s12
+                .col.m6.s12#signup_container
                     .card
                         .card-content
                             header
@@ -37,3 +37,6 @@ block content
                                     | Sign up
                                     i.mdi-content-send.right
                                 a.btn-flat(href='/account/signin') Sign in
+
+block scripts
+    script(src='../../assets/scripts/signup.js')

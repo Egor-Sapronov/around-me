@@ -1,19 +1,22 @@
 'use strict';
 
-var Login = require('./components/login.jsx');
+var SignUp = require('./components/signup.jsx');
 
-React.render(React.createElement(Login, {onClick: login}), document.getElementById('login_container'));
+React.render(React.createElement(SignUp, {onClick: signup}), document.getElementById('signup_container'));
 
-function login(email, password) {
+function signup(email, username, password) {
     var xhr = new XMLHttpRequest(),
-        auth = window.btoa(email + ':' + password);
+        data = {
+            username: username,
+            email: email,
+            password: password
+        };
 
-    xhr.open('GET', '/auth/login', true);
-    xhr.setRequestHeader('Authorization', 'Basic ' + auth);
+    xhr.open('POST', '/auth/signup', true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.onload = handleLoad;
 
-    xhr.send();
+    xhr.send(JSON.stringify(data));
 }
 
 function handleLoad() {

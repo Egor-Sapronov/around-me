@@ -20,7 +20,7 @@ router.get('/login',
             });
     });
 
-router.post('/register', function (req, res) {
+router.post('/signup', function (req, res) {
     authService.register({
         username: req.body.username,
         email: req.body.email,
