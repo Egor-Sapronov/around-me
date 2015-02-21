@@ -20,6 +20,20 @@ router.get('/login',
             });
     });
 
+router.post('/register', function (req, res) {
+    authService.register({
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password
+    })
+        .then(function (token) {
+            res.status(200).send({
+                token: token.token,
+                username: req.body.username
+            });
+        });
+});
+
 router.get('/logoff',
     passport.authenticate('bearer', {session: false}),
     function (req, res) {

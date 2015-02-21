@@ -152,8 +152,9 @@
 
   // Custom Globals
   "predef": [
-      "angular",
-      "$"
-    ]
+    "React",
+    "toast",
+    "$"
+  ]
   // additional predefined global variables
 }
