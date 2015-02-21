@@ -3,8 +3,11 @@ nav.default-primary-color
         .nav-wrapper
             a.brand-logo(id="logo-container", href='/') Around me
 
-            ul.right.side-nav(id='nav-mobile')
+            ul.right.hide-on-med-and-down
                 block links
-
-            a.button-collapse(data-activates='nav-mobile', href='#')
+            ul#slide-out.side-nav
+                block links
+                    
+            a.button-collapse(data-activates="slide-out", href='#')
                 i.mdi-navigation-menu
+
