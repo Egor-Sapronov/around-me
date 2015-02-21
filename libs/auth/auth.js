@@ -6,5 +6,10 @@ var passport = require('passport'),
     basicStrategy = require('./strategy').basicStrategy,
     bearerStrategy = require('./strategy').bearerStrategy;
 
-passport.use(new BasicStrategy(basicStrategy));
+passport.use(new BasicStrategy({
+    usernameField: 'email',
+    passwordField: 'password'
+}, basicStrategy));
 passport.use(new BearerStrategy(bearerStrategy));
+
+module.exports.passport = passport;

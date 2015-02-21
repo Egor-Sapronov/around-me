@@ -47,16 +47,7 @@ function bearerStrategy(accessToken, done) {
             UserModel
                 .find({where: {id: token.UserId}})
                 .then(function (user) {
-                    if (!user) {
-                        return done(null, false, {message: 'Unknown user'});
-                    }
-
                     done(null, user);
-                })
-                .catch(function (err) {
-                    if (err) {
-                        return done(err);
-                    }
                 });
         })
         .catch(function (err) {
