@@ -1,0 +1,23 @@
+extends ../layout
+block title
+    title Upload
+block header
+    header
+        include ../navigation/mainNav
+block content
+    section.section
+        .container
+            .row
+                .col.m6.s12
+                    .card
+                        .card-content
+                            h2.header Upload
+                            .input-field.file-field
+                                input.file-path.validate(type='text')
+                                .btn.waves-effect.default-primary-color
+                                    span File
+                                    input(type='file')
+                            .input-field
+                                button.btn.waves-effect.default-primary-color
+                                    | Upload
+                                    i.mdi-content-send.right

@@ -9,7 +9,10 @@ var passport = require('passport'),
         });
 
 router.get('/login',
-    passport.authenticate('basic', {session: false}),
+    passport.authenticate('basic', {
+        session: false,
+        failureFlash: false
+    }),
     function (req, res) {
         authService.createToken(req.user)
             .then(function (token) {

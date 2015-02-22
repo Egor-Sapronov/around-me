@@ -16,11 +16,14 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(passport.initialize());
 
-
 app.use('/auth', authRouter);
 
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/client/build/assets/templates/main/index.html');
+});
+
+app.get('/upload', function (req, res) {
+    res.sendFile(__dirname + '/client/build/assets/templates/main/upload.html');
 });
 
 app.get('/account/signin', function (req, res) {
