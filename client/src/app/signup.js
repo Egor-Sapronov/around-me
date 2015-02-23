@@ -12,7 +12,7 @@ function signup(email, username, password) {
             password: password
         };
 
-    xhr.open('POST', '/auth/signup', true);
+    xhr.open('POST', '/api/auth/signup', true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.onload = handleLoad;
 

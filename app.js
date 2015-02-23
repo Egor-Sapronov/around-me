@@ -6,6 +6,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     passport = require('./libs/auth/auth').passport,
     authRouter = require('./routes/auth'),
+    imagesRouter = require('./routes/api/images'),
     app = express();
 
 app.set('views', path.join(__dirname, 'client/build/assets/templates'));
@@ -16,7 +17,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(passport.initialize());
 
-app.use('/auth', authRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/images', imagesRouter);
 
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/client/build/assets/templates/main/index.html');
@@ -32,6 +34,10 @@ app.get('/account/signin', function (req, res) {
 
 app.get('/account/signup', function (req, res) {
     res.sendFile(__dirname + '/client/build/assets/templates/account/signup.html');
+});
+
+app.post('/api/images', function (req, res) {
+    res.status(200).end();
 });
 
 module.exports = app;

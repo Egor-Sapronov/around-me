@@ -12,12 +12,13 @@ block content
                     .card
                         .card-content
                             h2.header Upload
-                            .input-field.file-field
-                                input.file-path.validate(type='text')
-                                .btn.waves-effect.default-primary-color
-                                    span File
+                            #upload_container
+                                form(encType='multipart/form-data', method='POST', action='/api/images')
                                     input(type='file')
-                            .input-field
-                                button.btn.waves-effect.default-primary-color
-                                    | Upload
-                                    i.mdi-content-send.right
+                                    .input-field
+                                        button.btn.waves-effect.default-primary-color(type='submit')
+                                            | Upload
+                                            i.mdi-content-send.right
+
+block scripts
+    script(src='/assets/scripts/upload.js')

@@ -29,6 +29,8 @@ node_modules
 
 .idea
 
+uploads
+
 rundb.sh
 
 client/src/vendor

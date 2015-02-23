@@ -8,7 +8,7 @@ function login(email, password) {
     var xhr = new XMLHttpRequest(),
         auth = window.btoa(email + ':' + password);
 
-    xhr.open('GET', '/auth/login', true);
+    xhr.open('GET', '/api/auth/login', true);
     xhr.setRequestHeader('Authorization', 'Basic ' + auth);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.onload = handleLoad;
