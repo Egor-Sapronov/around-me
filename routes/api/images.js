@@ -8,6 +8,7 @@ var router = require('express')
     multer = require('multer'),
     fs = require('fs'),
     db = require('../../libs/data/database'),
+    path = require('path'),
     passport = require('passport');
 
 router.post('/',
@@ -22,11 +23,24 @@ router.post('/',
         db.Image
             .create({
                 path: filePath,
-                userId: req.user.id
+                UserId: req.user.id
             })
             .then(function (image) {
-                res.status(201).end();
+                res.status(201).send({id: image.id, UserId: image.UserId});
             });
     });
+
+router.get('/:id', function (req, res) {
+    db.Image.find({id: req.params.id})
+        .then(function (image) {
+            res.sendFile(path.resolve(image.path));
+        });
+});
+
+router.get('/', function (req, res) {
+    db.Image.all({attributes: ['id', 'UserId']}).then(function (images) {
+        res.send(images);
+    });
+});
 
 module.exports = router;
