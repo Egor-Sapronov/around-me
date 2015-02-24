@@ -2,8 +2,8 @@
 
 module.exports = function (sequelize, DataTypes) {
     return sequelize.define('Image', {
-        image: {
-            type: DataTypes.BLOB,
+        path: {
+            type: DataTypes.STRING,
             unique: true,
             allowNull: false,
             validate: {

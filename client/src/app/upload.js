@@ -6,11 +6,12 @@ React.render(React.createElement(Upload, {onClick: upload}), document.getElement
 
 function upload(files) {
     var xhr = new XMLHttpRequest(),
-        formData = new FormData();
+        formData = new FormData(),
+        token = localStorage.getItem('token');
 
-    console.log(files);
-    formData.append('thefile', files[0]);
+    formData.append('file', files[0]);
     xhr.open('POST', '/api/images', true);
+    xhr.setRequestHeader('Authorization', 'Bearer ' + token);
     xhr.onload = handleLoad;
 
     xhr.send(formData);
@@ -18,4 +19,10 @@ function upload(files) {
 
 function handleLoad() {
     /*jshint validthis:true */
+    if (this.status === 401) {
+        window.location.href = '/account/signin';
+    }
+    if (this.status === 201) {
+        toast('Image uploaded', 4000);
+    }
 }

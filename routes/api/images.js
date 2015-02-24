@@ -5,17 +5,28 @@ var router = require('express')
             caseSensitive: true,
             strict: true
         }),
-    multer = require('multer');
+    multer = require('multer'),
+    fs = require('fs'),
+    db = require('../../libs/data/database'),
+    passport = require('passport');
 
-router.use(multer({
-    dest: './uploads/',
-    rename: function () {
-        return Date.now();
-    }
-}));
-
-router.post('/', function (req, res) {
-    res.status(200).end();
-});
+router.post('/',
+    passport.authenticate('bearer', {session: false}),
+    multer({
+        dest: './uploads/',
+        rename: function () {
+            return Date.now();
+        }
+    }), function (req, res) {
+        var filePath = req.files.file.path;
+        db.Image
+            .create({
+                path: filePath,
+                userId: req.user.id
+            })
+            .then(function (image) {
+                res.status(201).end();
+            });
+    });
 
 module.exports = router;
