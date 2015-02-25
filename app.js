@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(passport.initialize());
 
-app.use('/api/auth', authRouter);
+app.use('/auth', authRouter);
 app.use('/api/images', imagesRouter);
 
 app.get('/', function (req, res) {

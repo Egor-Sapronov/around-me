@@ -1,7 +1,6 @@
 'use strict';
 
-var UserModel = require('../data/database').User,
-    AccessTokenModel = require('../data/database').AccessToken;
+var db = require('../data/database');
 
 /**
  * Exchange user for email and password
@@ -10,7 +9,7 @@ var UserModel = require('../data/database').User,
  * @param {function} <err,user>
  */
 function basicStrategy(email, password, done) {
-    UserModel
+    db.User
         .find({where: {email: email}})
         .then(function (user) {
 
@@ -37,14 +36,14 @@ function basicStrategy(email, password, done) {
  * @param {function} <err,user>
  */
 function bearerStrategy(accessToken, done) {
-    AccessTokenModel
+    db.AccessToken
         .find({where: {token: accessToken}})
         .then(function (token) {
             if (!token) {
                 return done(null, false);
             }
 
-            UserModel
+            return db.User
                 .find({where: {id: token.UserId}})
                 .then(function (user) {
                     done(null, user);
@@ -57,5 +56,14 @@ function bearerStrategy(accessToken, done) {
         });
 }
 
+function faceBookStrategy(accessToken, refreshToken, profile, done) {
+    console.log(profile);
+    db.FBUser.findOrCreate({username: profile.diplayName})
+        .then(function (user) {
+            done(null, user);
+        });
+}
+
+module.exports.faceBookStrategy = faceBookStrategy;
 module.exports.basicStrategy = basicStrategy;
 module.exports.bearerStrategy = bearerStrategy;
