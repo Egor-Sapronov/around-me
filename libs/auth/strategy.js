@@ -60,7 +60,7 @@ function faceBookStrategy(accessToken, refreshToken, profile, done) {
     console.log(profile);
     db.FBUser.findOrCreate({where: {username: profile.displayName}, defaults: {username: profile.displayName}})
         .then(function (user) {
-            done(null, profile);
+            done(null, user);
         });
 }
 
