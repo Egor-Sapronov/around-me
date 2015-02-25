@@ -58,7 +58,7 @@ function bearerStrategy(accessToken, done) {
 
 function faceBookStrategy(accessToken, refreshToken, profile, done) {
     console.log(profile);
-    db.FBUser.findOrCreate({username: profile.diplayName})
+    db.FBUser.findOrCreate({username: profile.diplayName}, {defaults: {username: profile.diplayName}})
         .then(function (user) {
             done(null, user);
         });
