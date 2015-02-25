@@ -57,9 +57,7 @@ router.get('/facebook', passport.authenticate('facebook', {session: false}));
 // authentication has failed.
 router.get('/facebook/callback',
     passport.authenticate('facebook', {
-        session: false,
-        successRedirect: '/',
-        failureRedirect: '/auth/facebook'
+        session: false
     }));
 
 module.exports = router;
