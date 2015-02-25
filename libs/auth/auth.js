@@ -16,7 +16,7 @@ passport.use(new BearerStrategy(bearerStrategy));
 passport.use(new FacebookStrategy({
     clientID: '1590106217869305',
     clientSecret: '2429eab69c44d26827111c74f4329258',
-    callbackURL: "http://www.around-me-dev.heroku.com/auth/facebook/callback"
+    callbackURL: "https://around-me-dev.herokuapp.com/auth/facebook/callback"
 }, facebookStrategy));
 
 module.exports.passport = passport;
