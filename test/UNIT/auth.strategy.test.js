@@ -11,6 +11,7 @@ describe('Auth strategy', function () {
         it('Should return user', function (done) {
             facebookStrategy('token', 'rtoken', {displayName: 'egor'}, function (err, user) {
                 expect(user).to.be.ok;
+                expect(user.username).to.equal('egor');
                 done();
             });
         });

@@ -46,7 +46,7 @@ function bearerStrategy(accessToken, done) {
             return db.User
                 .find({where: {id: token.UserId}})
                 .then(function (user) {
-                    done(null, user);
+                    return done(null, user);
                 });
         })
         .catch(function (err) {
@@ -58,8 +58,8 @@ function bearerStrategy(accessToken, done) {
 
 function faceBookStrategy(accessToken, refreshToken, profile, done) {
     db.FBUser.findOrCreate({where: {username: profile.displayName}, defaults: {username: 'egor'}})
-        .then(function (user) {
-            done(null, user);
+        .spread(function (user, created) {
+            return done(null, user);
         });
 }
 
