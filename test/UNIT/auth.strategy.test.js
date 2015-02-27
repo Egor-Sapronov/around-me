@@ -3,9 +3,18 @@ var expect = require('chai').expect,
     sequelize = require('../../libs/data/database').sequelize,
     AccessToken = require('../../libs/data/database').AccessToken,
     basicStrategy = require('../../libs/auth/strategy').basicStrategy,
-    bearerStrategy = require('../../libs/auth/strategy').bearerStrategy;
+    bearerStrategy = require('../../libs/auth/strategy').bearerStrategy,
+    facebookStrategy = require('../../libs/auth/strategy').faceBookStrategy;
 
 describe('Auth strategy', function () {
+    describe('#facebookStrategy', function () {
+        it('Should return user', function (done) {
+            facebookStrategy('token', 'rtoken', {displayName: 'egor'}, function (err, user) {
+                expect(user).to.be.ok;
+                done();
+            });
+        });
+    });
 
     describe('#basicStrategy', function () {
         it('Should return user for username and password', function (done) {
