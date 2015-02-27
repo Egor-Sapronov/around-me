@@ -58,8 +58,12 @@ router.get('/facebook', passport.authenticate('facebook', {session: false}));
 router.get('/facebook/callback',
     passport.authenticate('facebook', {
         session: false,
-        successRedirect: '/success',
+        successRedirect: '/auth/success',
         failureRedirect: '/login'
     }));
+
+router.get('/success', function (req, res) {
+    res.send('asdsd');
+});
 
 module.exports = router;

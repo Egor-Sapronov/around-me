@@ -59,7 +59,8 @@ function bearerStrategy(accessToken, done) {
 function faceBookStrategy(accessToken, refreshToken, profile, done) {
     db.FBUser.findOrCreate({where: {username: profile.displayName}, defaults: {username: profile.displayName}})
         .spread(function (user, created) {
-            console.log(user);
+
+            console.log(accessToken);
             return done(null, {});
         });
 }
