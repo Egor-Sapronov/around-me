@@ -62,8 +62,15 @@ router.get('/facebook/callback',
         failureRedirect: '/login'
     }));
 
-router.get('/success', function (req, res) {
+router.get('/success', ensureAuthenticated, function (req, res) {
     res.send('asdsd');
 });
+
+function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/')
+}
 
 module.exports = router;
