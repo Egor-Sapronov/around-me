@@ -8,12 +8,14 @@ html
 
         meta(name='description', content='')
         meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(rel='stylesheet',href='../../assets/stylesheets/entypo.css')
         link(rel='stylesheet', href='../../vendor/materialize/dist/css/materialize.min.css')
         link(rel='stylesheet', href='../../assets/stylesheets/site.css')
 
         block stylesheets
     body
-        block header
+        header
+            include ../navigation/navbar
 
         block content
 

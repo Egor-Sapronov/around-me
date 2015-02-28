@@ -7,6 +7,7 @@ var express = require('express'),
     passport = require('./libs/auth/auth').passport,
     authRouter = require('./routes/auth'),
     imagesRouter = require('./routes/api/images'),
+    profilesRouter = require('./routes/api/profiles'),
     app = express();
 
 app.set('views', path.join(__dirname, 'client/build/assets/templates'));
@@ -19,6 +20,7 @@ app.use(passport.initialize());
 
 app.use('/auth', authRouter);
 app.use('/api/images', imagesRouter);
+app.use('/api/profiles', profilesRouter);
 
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/client/build/assets/templates/main/index.html');

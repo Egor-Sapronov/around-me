@@ -2,12 +2,9 @@ nav.default-primary-color
     .container
         .nav-wrapper
             a.brand-logo(id="logo-container", href='/') Around me
-
-            ul.right.hide-on-med-and-down
-                block links
-            ul#slide-out.side-nav
-                block links
-                    
-            a.button-collapse(data-activates="slide-out", href='#')
-                i.mdi-navigation-menu
+            ul.right
+                li.waves-effect.waves-light
+                    a(href='/auth/facebook')
+                        | Login
+                        i.entypo-facebook-squared.left
 
