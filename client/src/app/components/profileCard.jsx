@@ -7,13 +7,11 @@ var ProfileCard = React.createClass({
                 <img src={this.props.user.image} className="responsive-img" />
             </div>
             <div className="card-content">
-                <ul className="collection">
-                    <a className="collection-item waves-effect waves-light-green-lighten-1">{this.props.user.name}
-                        <span className="badge">share
-                            <i className="mdi-social-share right"></i>
-                        </span>
-                    </a>
-                </ul>
+                <a className="collection-item waves-effect waves-light-green-lighten-1">{this.props.user.name}
+                    <span className="badge">share
+                        <i className="mdi-social-share right"></i>
+                    </span>
+                </a>
             </div>
         </div>;
     }
