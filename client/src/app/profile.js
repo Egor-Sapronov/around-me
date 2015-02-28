@@ -39,11 +39,10 @@ function handleLoad() {
         xhr.onload = function () {
             if (this.status === 200) {
                 responseObj = JSON.parse(this.responseText);
-                var image = responseObj.url;
 
                 React.render(React.createElement(ProfileCard, {
                     user: {
-                        image: image,
+                        image: responseObj.url,
                         name: username
                     }
                 }), document.getElementById('profile_container'));
