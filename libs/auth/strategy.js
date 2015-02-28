@@ -1,6 +1,7 @@
 'use strict';
 
-var db = require('../data/database');
+var db = require('../data/database'),
+    authService = require('./authService');
 
 /**
  * Exchange user for email and password
@@ -71,10 +72,12 @@ function faceBookStrategy(accessToken, refreshToken, profile, done) {
             }
         })
         .spread(function (user, created) {
-            console.log(user.values);
-            console.log(profile);
-            console.log(accessToken);
-            return done(null, {});
+            authService
+                .createToken(user, accessToken)
+                .then(function () {
+                    return done(null, user);
+                });
+
         });
 }
 

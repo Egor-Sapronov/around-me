@@ -61,9 +61,13 @@ router.get('/facebook', passport.authenticate('facebook', {
 router.get('/facebook/callback',
     passport.authenticate('facebook', {
         session: false,
-        successRedirect: '/profile',
         failureRedirect: '/login'
-    }));
+    }),
+    function (req, res) {
+        console.log(req.user);
+
+        res.redirect('/profile');
+    });
 
 
 module.exports = router;
