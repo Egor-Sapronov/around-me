@@ -31,7 +31,7 @@ function handleLoad() {
         var responseObj = JSON.parse(this.responseText),
             xhr = new XMLHttpRequest();
 
-        xhr.open('GET', 'graph.facebook.com/v2.2/' + responseObj.providerId + '/picture?redirect=0', true);
+        xhr.open('GET', 'http://graph.facebook.com/v2.2/' + responseObj.providerId + '/picture?redirect=0&type=large', true);
 
         xhr.send();
     }
