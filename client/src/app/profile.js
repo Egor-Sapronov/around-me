@@ -9,7 +9,6 @@ if (accessToken) {
 
 function saveToken(token) {
     localStorage.setItem('token', token);
-
 }
 
 function loadProfile() {
@@ -28,6 +27,13 @@ function handleLoad() {
     /*jshint validthis:true */
     if (this.status === 200) {
         toast('Login successful', 4000);
+
+        var responseObj = JSON.parse(this.responseText),
+            xhr = new XMLHttpRequest();
+
+        xhr.open('GET', 'graph.facebook.com/v2.2/' + responseObj.providerId + '/picture?redirect=0', true);
+
+        xhr.send();
     }
     if (this.status === 401) {
         window.location.href = '/auth/facebook';
