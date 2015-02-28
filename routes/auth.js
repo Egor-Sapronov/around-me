@@ -64,9 +64,11 @@ router.get('/facebook/callback',
         failureRedirect: '/login'
     }),
     function (req, res) {
-        console.log(req.user);
+        authService.getToken(req.user)
+            .then(function (token) {
+                res.redirect('/profile?token=' + token.token);
+            });
 
-        res.redirect('/profile');
     });
 
 

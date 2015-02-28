@@ -19,6 +19,15 @@ function createToken(user, token) {
         });
 }
 
+function getToken(user) {
+    return db.AccessToken.find(
+        {
+            where: {
+                UserId: user.id
+            }
+        });
+}
+
 /**
  * delete all access tokens for the user
  * @param user
@@ -31,5 +40,6 @@ function logOff(user) {
 
 module.exports = {
     createToken: createToken,
-    logOff: logOff
+    logOff: logOff,
+    getToken: getToken
 };
