@@ -66,7 +66,7 @@ router.get('/facebook/callback',
     function (req, res) {
         authService.getToken(req.user)
             .then(function (token) {
-                res.redirect('/profile?token=' + token.token);
+                res.redirect('/profile#' + token.token);
             });
 
     });

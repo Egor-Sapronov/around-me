@@ -28,12 +28,8 @@ app.get('/upload', function (req, res) {
     res.sendFile(__dirname + '/client/build/assets/templates/main/upload.html');
 });
 
-app.get('/account/signin', function (req, res) {
-    res.sendFile(__dirname + '/client/build/assets/templates/account/signin.html');
-});
-
-app.get('/account/signup', function (req, res) {
-    res.sendFile(__dirname + '/client/build/assets/templates/account/signup.html');
+app.get('/profile', function (req, res) {
+    res.sendFile(__dirname + '/client/build/assets/templates/account/profile.html');
 });
 
 app.post('/api/images', function (req, res) {
