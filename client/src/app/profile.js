@@ -1,6 +1,7 @@
 'use strict';
 
-var accessToken = location.hash.split('#')[1];
+var accessToken = location.hash.split('#')[1],
+    ProfileCard = require('./components/profileCard.jsx');
 
 if (accessToken) {
     saveToken(accessToken);
@@ -21,6 +22,7 @@ function loadProfile() {
     xhr.onload = handleLoad;
 
     xhr.send();
+
 }
 
 function handleLoad() {
@@ -29,9 +31,24 @@ function handleLoad() {
         toast('Login successful', 4000);
 
         var responseObj = JSON.parse(this.responseText),
-            xhr = new XMLHttpRequest();
+            xhr = new XMLHttpRequest(),
+            username = responseObj.displayName;
 
         xhr.open('GET', 'https://graph.facebook.com/v2.2/' + responseObj.providerId + '/picture?redirect=0&type=large', true);
+
+        xhr.onload = function () {
+            if (this.status === 200) {
+                responseObj = JSON.parse(this.responseText);
+                var image = responseObj.url;
+
+                React.render(React.createElement(ProfileCard, {
+                    user: {
+                        image: image,
+                        name: username
+                    }
+                }), document.getElementById('profile_container'));
+            }
+        };
 
         xhr.send();
     }
