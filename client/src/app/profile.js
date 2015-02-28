@@ -34,7 +34,7 @@ function handleLoad() {
             xhr = new XMLHttpRequest(),
             username = responseObj.displayName;
 
-        xhr.open('GET', 'https://graph.facebook.com/v2.2/' + responseObj.providerId + '/picture?redirect=0&type=large', true);
+        xhr.open('GET', 'https://graph.facebook.com/v2.2/' + responseObj.providerId + '/picture?redirect=0&width=9999', true);
 
         xhr.onload = function () {
             if (this.status === 200) {
