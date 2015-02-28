@@ -42,7 +42,7 @@ function handleLoad() {
 
                 React.render(React.createElement(ProfileCard, {
                     user: {
-                        image: responseObj.url,
+                        image: responseObj.data.url,
                         name: username
                     }
                 }), document.getElementById('profile_container'));
