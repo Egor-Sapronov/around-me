@@ -3,10 +3,10 @@
 var ProfileCard = React.createClass({
     render: function () {
         return <div>
-            <div className="row valign-wrapper">
-                <div className="col l2 s12 valign">
-                    <img src={this.props.user.image} className="circle responsive-img" />
-                    <p className="flow-text">{this.props.user.name}</p>
+            <div className="row">
+                <div className="col l12 valign-wrapper">
+                    <img src={this.props.user.image} className="valign center-align circle responsive-img" />
+                    <p className="flow-text valign center-align">{this.props.user.name}</p>
                 </div>
             </div>
             <div className="container">
