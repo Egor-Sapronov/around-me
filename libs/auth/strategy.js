@@ -54,5 +54,4 @@ function faceBookStrategy(accessToken, refreshToken, profile, done) {
 }
 
 module.exports.faceBookStrategy = faceBookStrategy;
-module.exports.basicStrategy = basicStrategy;
 module.exports.bearerStrategy = bearerStrategy;
