@@ -19,7 +19,7 @@ if (accessToken) {
         .then(function (image) {
             React.render(React.createElement(ProfileCard, {
                 user: {
-                    image: image.data.url.profileImage,
+                    image: image.data.url,
                     name: user.displayName
                 }
             }), document.getElementById('profile_container'));
