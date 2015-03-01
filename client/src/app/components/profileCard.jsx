@@ -3,10 +3,10 @@
 var ProfileCard = React.createClass({
     render: function () {
         return < div >
-            <main className="container">
+            <main className="container section">
                 <div className="row">
                     <div className="col l3 offset-l4 s12">
-                        <img src={this.props.user.image} className="circle responsive-img center-align" />
+                        <img src={this.props.user.image} className="circle z-depth-2 responsive-img center-align" />
                         <p className="center-align flow-text">{this.props.user.name}</p>
                     </div>
                 </div>
@@ -25,6 +25,7 @@ var ProfileCard = React.createClass({
                     </div>
                 </div>
             </aside>
+            <div className="divider"></div>
         </div>;
     }
 });
