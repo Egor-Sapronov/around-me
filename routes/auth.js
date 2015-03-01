@@ -8,35 +8,6 @@ var passport = require('passport'),
             strict: true
         });
 
-router.get('/login',
-    passport.authenticate('basic', {
-        session: false,
-        failureFlash: false
-    }),
-    function (req, res) {
-        authService.createToken(req.user)
-            .then(function (token) {
-                res.status(200).send({
-                    token: token.token,
-                    username: req.user.username
-                });
-            });
-    });
-
-router.post('/signup', function (req, res) {
-    authService.register({
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password
-    })
-        .then(function (token) {
-            res.status(200).send({
-                token: token.token,
-                username: req.body.username
-            });
-        });
-});
-
 router.get('/logoff',
     passport.authenticate('bearer', {session: false}),
     function (req, res) {

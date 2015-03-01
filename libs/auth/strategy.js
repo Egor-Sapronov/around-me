@@ -4,34 +4,6 @@ var db = require('../data/database'),
     authService = require('./authService');
 
 /**
- * Exchange user for email and password
- * @param {string} email
- * @param {string} password
- * @param {function} <err,user>
- */
-function basicStrategy(email, password, done) {
-    db.User
-        .find({where: {email: email}})
-        .then(function (user) {
-
-            if (!user) {
-                return done(null, false);
-            }
-
-            if (!user.checkPassword(password)) {
-                return done(null, false);
-            }
-
-            return done(null, user);
-        })
-        .catch(function (err) {
-            if (err) {
-                return done(err);
-            }
-        });
-}
-
-/**
  * Exchange user for access token
  * @param {string} accessToken
  * @param {function} <err,user>
