@@ -20,7 +20,7 @@ if (accessToken) {
             React.render(React.createElement(ProfileCard, {
                 user: {
                     image: image.data.url,
-                    name: user.displayName
+                    name: user.displayName.toUpperCase()
                 }
             }), document.getElementById('profile_container'));
         });
