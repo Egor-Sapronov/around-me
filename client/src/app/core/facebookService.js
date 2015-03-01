@@ -1,19 +1,13 @@
 'use strict';
 
-function saveToken(token) {
-    localStorage.setItem('token', token);
-}
-
-function userInfo() {
+function profileImage(options) {
     return new Promise(function (resolve, reject) {
-        if (!localStorage.getItem('token')) {
-            reject({error: 'Error', code: 401});
-        }
-
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', '/api/profiles', true);
-        xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('token'));
+
+        xhr.open('GET', 'https://graph.facebook.com/v2.2/' + options.providerId + '/picture?'+options.params, true);
+
         xhr.onload = handleLoad;
+
         xhr.send();
 
         function handleLoad() {
@@ -28,7 +22,5 @@ function userInfo() {
 }
 
 module.exports = {
-    saveToken: saveToken,
-    userInfo: userInfo
+    profileImage: profileImage
 };
-
