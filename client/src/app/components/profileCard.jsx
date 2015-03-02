@@ -25,7 +25,6 @@ var ProfileCard = React.createClass({
                     </div>
                 </div>
             </aside>
-            <div className="divider"></div>
         </div>;
     }
 });
