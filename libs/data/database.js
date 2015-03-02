@@ -9,7 +9,6 @@ var Sequelize = require('sequelize'),
     User = require('../model/user'),
     AccessToken = require('../model/accessToken'),
     Role = require('../model/role'),
-    FBUser = require('../model/fbUser'),
     Image = require('../model/image'),
     db = {
         sequelize: sequelize,
@@ -17,8 +16,7 @@ var Sequelize = require('sequelize'),
         User: sequelize.import('User', User),
         AccessToken: sequelize.import('AccessToken', AccessToken),
         Role: sequelize.import('Role', Role),
-        Image: sequelize.import('Image', Image),
-        FBUser: sequelize.import('FBUser', FBUser)
+        Image: sequelize.import('Image', Image)
     };
 
 db.Image.belongsTo(db.User);
