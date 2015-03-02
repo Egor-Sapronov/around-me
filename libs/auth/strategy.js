@@ -30,6 +30,7 @@ function bearerStrategy(accessToken, done) {
 }
 
 function faceBookStrategy(accessToken, refreshToken, profile, done) {
+    console.log(profile);
     db.User
         .findOrCreate({
             where: {providerId: profile.id},
